@@ -62,3 +62,43 @@ You're about to initialize a Firebase project in this directory:
 [info] 
 [info] +  Success! Logged into GitHub as MatiPachame 
 [info] 
+[debug] [2024-04-22T22:45:06.759Z] >>> [apiv2][query] GET https://api.github.com/repos//actions/secrets/public-key type=owner
+[debug] [2024-04-22T22:45:07.067Z] <<< [apiv2][status] GET https://api.github.com/repos//actions/secrets/public-key 404
+[debug] [2024-04-22T22:45:07.067Z] <<< [apiv2][body] GET https://api.github.com/repos//actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[info] 
+[info] 
+[error] !  The provided authorization cannot be used with this repository. If this repository is in an organization, did you remember to grant access? 
+[info] 
+[info] i  Action required: Visit this URL to ensure access has been granted to the appropriate organization(s) for the Firebase CLI GitHub OAuth App: 
+[info] https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+[info] 
+[debug] [2024-04-22T22:46:23.685Z] >>> [apiv2][query] GET https://api.github.com/repos/MatiPachame/TPClinica.git/actions/secrets/public-key type=owner
+[debug] [2024-04-22T22:46:23.962Z] <<< [apiv2][status] GET https://api.github.com/repos/MatiPachame/TPClinica.git/actions/secrets/public-key 404
+[debug] [2024-04-22T22:46:23.962Z] <<< [apiv2][body] GET https://api.github.com/repos/MatiPachame/TPClinica.git/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest/actions/secrets#get-a-repository-public-key"}
+[info] 
+[info] 
+[error] !  The provided authorization cannot be used with this repository. If this repository is in an organization, did you remember to grant access? 
+[info] 
+[info] i  Action required: Visit this URL to ensure access has been granted to the appropriate organization(s) for the Firebase CLI GitHub OAuth App: 
+[info] https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+[info] 
+[debug] [2024-04-22T22:47:41.718Z] >>> [apiv2][query] GET https://api.github.com/repos/MatiPachame/TPClinica.git/actions/secrets/public-key type=owner
+[debug] [2024-04-22T22:47:41.998Z] <<< [apiv2][status] GET https://api.github.com/repos/MatiPachame/TPClinica.git/actions/secrets/public-key 404
+[debug] [2024-04-22T22:47:41.999Z] <<< [apiv2][body] GET https://api.github.com/repos/MatiPachame/TPClinica.git/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest/actions/secrets#get-a-repository-public-key"}
+[info] 
+[info] 
+[error] !  The provided authorization cannot be used with this repository. If this repository is in an organization, did you remember to grant access? 
+[info] 
+[info] i  Action required: Visit this URL to ensure access has been granted to the appropriate organization(s) for the Firebase CLI GitHub OAuth App: 
+[info] https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+[info] 
+[debug] [2024-04-22T22:48:13.094Z] >>> [apiv2][query] GET https://api.github.com/repos/https://github.com/MatiPachame/TPClinica.git/actions/secrets/public-key type=owner
+[debug] [2024-04-22T22:48:13.366Z] <<< [apiv2][status] GET https://api.github.com/repos/https://github.com/MatiPachame/TPClinica.git/actions/secrets/public-key 404
+[debug] [2024-04-22T22:48:13.366Z] <<< [apiv2][body] GET https://api.github.com/repos/https://github.com/MatiPachame/TPClinica.git/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[info] 
+[info] 
+[error] !  The provided authorization cannot be used with this repository. If this repository is in an organization, did you remember to grant access? 
+[info] 
+[info] i  Action required: Visit this URL to ensure access has been granted to the appropriate organization(s) for the Firebase CLI GitHub OAuth App: 
+[info] https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+[info] 
