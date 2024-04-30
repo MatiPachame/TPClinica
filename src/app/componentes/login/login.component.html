@@ -1,7 +1,21 @@
-<div>
+<div class="container-fluid">
     <h1>Login</h1>
-    <input type="email" [(ngModel)]="this.email" name="email" placeholder="Email" required="required">
-    <input type="password" [(ngModel)]="this.password" name="password" placeholder="Contraseña" required="required">
-    <button type="submit" (click)="login()">Log In</button>
+
+    <br>
+
+    <div class="row">
+        <input class="offset-3 col-3" type="email" [(ngModel)]="usuario.nombre" name="email" placeholder="Email" required="required">
+    </div>
+
+    <div class="row">
+        <input class="offset-3 col-3" type="password" [(ngModel)]="usuario.password" name="password" placeholder="Contraseña" required="required">
+    </div>
+
+    
+
+    <div class="row">
+        <input class="offset-3 col-6 btn btn-primary" type="button" (click)="login()" value="Ingresar">
+        <a class="offset-3 col-6 btn btn-primary" [routerLink]="'/principal/registro'" >Registrar</a> >
+    </div>
     
 </div>

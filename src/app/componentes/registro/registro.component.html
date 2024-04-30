@@ -1,1 +1,31 @@
-<p>registro works!</p>
+<div class="container-fluid">
+    <h1>Registrar</h1>
+
+    <br>
+
+    <div class="row">
+        <p class="offset-3 col-3">Usuario</p>
+        <input class="col-3" type="email" [(ngModel)]="usuario.nombre" name="email" placeholder="Nombre" required="required">
+    </div>
+
+    <div class="row">
+        <p class="offset-3 col-3">Contraseña</p>
+        <input class="col-3" type="password" [(ngModel)]="usuario.password" name="password" placeholder="Contraseña" required="required">
+    </div>
+
+    <div class="row">
+        <p class="offset-3 col-3">Repita Contraseña</p>
+        <input class="col-3" type="password" [(ngModel)]="password2" name="password" placeholder="Contraseña" required="required">
+    </div>
+
+    <div class="row">
+        <p class="offset-3 col-3">Mail</p>
+        <input class="col-3" type="email" [(ngModel)]="usuario.nombre" name="email" placeholder="Email" required="required">
+    </div>
+
+    <div class="row" *ngIf="usuario.password == password2 && !validarExiste()">
+        <input class="offset-3 col-6 btn btn-primary" type="button" (click)="registrar()" value="Registrar">
+        
+    </div>
+    
+</div>
