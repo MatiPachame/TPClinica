@@ -8,7 +8,7 @@ import { ErrorComponent } from './componentes/error/error.component';
 export const routes: Routes = [
 
     {path:'principal', component:PrincipalComponent, children:[
-        {path:'', component:LoginComponent},
+        {path:'login', component:LoginComponent},
         {path:'registro', component:RegistroComponent},
         {path:'bienvenida', component:BienvenidaComponent}
 
