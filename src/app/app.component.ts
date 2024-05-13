@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { BienvenidaComponent } from "./componentes/bienvenida/bienvenida.component";
 import { MenuComponent } from "./componentes/menu/menu.component";
 
@@ -12,4 +12,15 @@ import { MenuComponent } from "./componentes/menu/menu.component";
 })
 export class AppComponent {
   title = 'tpclinica';
+  isLoading: boolean = false;
+
+  constructor(private router: Router){
+    this.router.events.subscribe(event =>{
+      if (event instanceof NavigationStart) {
+        this.isLoading = true;
+      } else if (event instanceof NavigationEnd){
+        this.isLoading = false;
+      }
+    });
+  }
 }

@@ -3,13 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { Usuario } from '../../entidades/usuario';
 import { Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../servicios/usuario.service';
+import { LoadingComponent } from "../loading/loading.component";
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule,RouterModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-login',
+    standalone: true,
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css',
+    imports: [FormsModule, RouterModule, LoadingComponent]
 })
 export class LoginComponent {
   public usuario:Usuario = {nombre:'', password:'', mail:''};
