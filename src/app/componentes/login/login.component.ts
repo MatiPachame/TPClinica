@@ -13,7 +13,7 @@ import { LoadingComponent } from "../loading/loading.component";
     imports: [FormsModule, RouterModule, LoadingComponent]
 })
 export class LoginComponent {
-  public usuario:Usuario = {nombre:'', password:'', mail:''};
+  public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0};
   public listaUsuario:Usuario [] = [];
 
 
@@ -25,22 +25,26 @@ export class LoginComponent {
   }
 
   public login(){
-    //cargamos la lista desde el local storage
-    this.listaUsuario = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    //verificamos credenciales
-    if(this.listaUsuario.filter(t=> t.nombre.toLowerCase == this.usuario.nombre.toLowerCase && t.password == this.usuario.password ).length == 1){
+    // //cargamos la lista desde el local storage
+    // this.listaUsuario = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    // //verificamos credenciales
+    // if(this.listaUsuario.filter(t=> t.nombre.toLowerCase == this.usuario.nombre.toLowerCase && t.password == this.usuario.password ).length == 1){
 
-      //guardamos usuario logueado
-      localStorage.setItem('usuarioLogueado', JSON.stringify(this.listaUsuario.filter(t=> t.nombre.toLowerCase == this.usuario.nombre.toLowerCase && t.password == this.usuario.password )[0]));
+    //   //guardamos usuario logueado
+    //   localStorage.setItem('usuarioLogueado', JSON.stringify(this.listaUsuario.filter(t=> t.nombre.toLowerCase == this.usuario.nombre.toLowerCase && t.password == this.usuario.password )[0]));
       
-      //pasar a la pagina de bienvenida
-      this.route.navigateByUrl('/principal/bienvenida');
+    this.usuarioservices.loginAPI(this.usuario).subscribe(
+      x=>{
 
+        if((<Usuario>x).usuario !=null)
+          {
+            this.usuarioservices.setLogueadoXApi(<Usuario>x);
 
-    }
-
-    this.usuarioservices.estoyLogueado();
-
+            //pasar a la pagina de bienvenida
+            this.route.navigateByUrl('/principal/bienvenida');
+          }
+      }
+    )
+    //this.usuarioservices.estoyLogueado();
   }
-
 }
