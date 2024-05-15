@@ -38,13 +38,29 @@ export class LoginComponent {
 
         if((<Usuario>x).usuario !=null)
           {
+            
+
             this.usuarioservices.setLogueadoXApi(<Usuario>x);
+            localStorage.setItem('usuarioLogueado',JSON.stringify(this.usuario));
+            
 
             //pasar a la pagina de bienvenida
             this.route.navigateByUrl('/principal/bienvenida');
           }
       }
     )
-    //this.usuarioservices.estoyLogueado();
+    this.usuarioservices.estoyLogueado();
   }
+
+  public logout(){
+    //Vaciamos el local storage de la sesion iniciada
+    localStorage.removeItem('usuarioLogueado');
+
+    //Routeamos a la pagina principal
+    this.route.navigateByUrl('/principal');
+  }
+  
+
+
 }
+

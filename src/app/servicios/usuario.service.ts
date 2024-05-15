@@ -53,6 +53,7 @@ export class UsuarioService {
 
     public setLogueadoXApi(usuario:Usuario){
       this.usuarioLogueado = usuario;
+      
     }
 
     public registrar(usuario:Usuario){

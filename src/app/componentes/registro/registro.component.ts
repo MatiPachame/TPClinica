@@ -16,7 +16,7 @@ export class RegistroComponent {
   
 
   listaUsuarios:Usuario[] = [];
-  public usuario:Usuario = {nombre:'', password:'', mail:''};
+  public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0};
   public password2:string = '';
 
   constructor(public router:Router,private us:UsuarioService){
