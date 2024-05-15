@@ -35,7 +35,7 @@ export class LoginComponent {
       
     this.usuarioservices.loginAPI(this.usuario).subscribe(
       x=>{
-
+        
         if((<Usuario>x).usuario !=null)
           {
             

@@ -48,7 +48,7 @@ export class UsuarioService {
     }
 
     public loginAPI(usuario:Usuario){
-      return this.http.post(this.API + "/login",usuario);
+      return this.http.post(this.API + "/login", usuario);
     }
 
     public setLogueadoXApi(usuario:Usuario){
