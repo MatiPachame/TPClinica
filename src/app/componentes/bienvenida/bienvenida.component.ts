@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuComponent } from "../menu/menu.component";
+import { Usuario } from '../../entidades/usuario';
 
 @Component({
     selector: 'app-bienvenida',
@@ -9,5 +10,5 @@ import { MenuComponent } from "../menu/menu.component";
     imports: [MenuComponent]
 })
 export class BienvenidaComponent {
-
+    
 }

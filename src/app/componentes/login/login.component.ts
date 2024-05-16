@@ -53,15 +53,6 @@ export class LoginComponent {
     this.usuarioservices.estoyLogueado();
   }
 
-  public logout(){
-    //Vaciamos el local storage de la sesion iniciada
-    localStorage.removeItem('usuarioLogueado');
-
-    //Routeamos a la pagina principal
-    this.route.navigateByUrl('/principal');
-  }
-  
-
 
 }
 
