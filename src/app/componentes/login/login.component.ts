@@ -39,8 +39,9 @@ export class LoginComponent {
         if((<Usuario>x).usuario !=null)
           {
             
-
             this.usuarioservices.setLogueadoXApi(<Usuario>x);
+
+            //Guardamos en el local storage el usuario logueado
             localStorage.setItem('usuarioLogueado',JSON.stringify(this.usuario));
             
 
