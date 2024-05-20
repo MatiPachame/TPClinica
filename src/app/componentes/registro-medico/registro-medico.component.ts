@@ -17,11 +17,37 @@ export class RegistroMedicoComponent {
 
   listaUsuarios:Usuario[] = [];
   public medico:Medico = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 2, especialidad:'', dias_atencion:[],
-                          horario_atencion:'',especialidad_foto:'', perfil_foto:'' };
+                          horario_atencion:'',especialidad_foto:null, perfil_foto:null };
   public password2:string = '';
 
   constructor(public router:Router,private us:UsuarioService,private ngZone:NgZone){
     this.listaUsuarios =JSON.parse(localStorage.getItem('usuarios') || "[]");
+  }
+
+  diasSemana: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+
+  toggleDiaAtencion(dia: string) {
+    const index = this.medico.dias_atencion.indexOf(dia);
+    if (index === -1) {
+      this.medico.dias_atencion.push(dia);
+    } else {
+      this.medico.dias_atencion.splice(index, 1);
+    }
+  }
+
+  onFileChange(event: any, tipo: 'especialidad_foto' | 'perfil_foto') {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        if (tipo === 'especialidad_foto') {
+          this.medico.especialidad_foto = e.target.result;
+        } else if (tipo === 'perfil_foto') {
+          this.medico.perfil_foto = e.target.result;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
   }
 
 
@@ -43,7 +69,15 @@ export class RegistroMedicoComponent {
     this.medico.mail='';
     this.medico.usuario='';
     this.medico.password='';
+    this.medico.especialidad='';
+    this.medico.dias_atencion=[];
+    this.medico.horario_atencion='';
+    this.medico.especialidad_foto=null;
+    this.medico.perfil_foto=null;
+
   }
+
+  
 
   public registrar(){
 
