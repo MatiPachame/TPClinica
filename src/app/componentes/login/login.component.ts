@@ -4,13 +4,14 @@ import { Usuario } from '../../entidades/usuario';
 import { Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../servicios/usuario.service';
 import { LoadingComponent } from "../loading/loading.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-login',
     standalone: true,
     templateUrl: './login.component.html',
     styleUrl: './login.component.css',
-    imports: [FormsModule, RouterModule, LoadingComponent]
+    imports: [FormsModule, RouterModule, LoadingComponent, CommonModule]
 })
 export class LoginComponent {
   public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0};

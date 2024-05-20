@@ -16,11 +16,17 @@ export class MenuComponent {
   public listaUsuario:Usuario [] = [];
   public estaLogueado:boolean=false;
   private route: Router = new Router;
+  
 
-  constructor(private usuarioservices:UsuarioService){
+  constructor(public usuarioservices:UsuarioService){
+
+    
 
     if(this.usuarioservices.usuarioLogueado.usuario != '' )
       this.estaLogueado=true;
+      this.listaUsuario = JSON.parse(localStorage.getItem('usuarioLogueado') || '[]');
+
+
 
     //Si hay, se guarda en listaUsuario el usuario que este logueado desde el LocalStorage
     //this.listaUsuario = JSON.parse(localStorage.getItem('usuarioLogueado') || '[]');

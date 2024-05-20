@@ -1,4 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div *ngIf="this.usuarioservices.usuarioLogueado.tipo_usuario == 0 then menu">
+
+</div>
+
+<div *ngIf="this.usuarioservices.usuarioLogueado.tipo_usuario == 1 then menuPaciente">
+
+</div>
+
+<div *ngIf="this.usuarioservices.usuarioLogueado.tipo_usuario == 2 then menuMedico">
+
+</div>
+
+<div *ngIf="this.usuarioservices.usuarioLogueado.tipo_usuario == 3 then menuAdministrador">
+
+</div>
+
+
+<ng-template #menu>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">TPClinica</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,27 +30,114 @@
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="'/principal/login'">Login</a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/registro'">Registro</a>
+        </li>
+        <li class="nav-item active" >
+          <a class="nav-link" [routerLink]="'/principal/login'">Institucional</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</ng-template>
+
+<ng-template #menuPaciente>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">TPClinica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal'">Nuevo Turno</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal'">Historial</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal'">Mis turnos</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/login'">Mi perfil</a>
+        </li>
         <li class="nav-item active" >
           <a class="nav-link" *ngIf="estaLogueado" (click)="logout()">Cerrar Sesion</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </nav>
+</ng-template >
+
+
+
+<ng-template #menuMedico>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">TPClinica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal'">Aceptar turnos</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/login'">Modificar horarios</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/login'">Ver reportes</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/login'">Ver pacientes</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/login'">Calendario</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/login'">Mi perfil</a>
+        </li>
+        <li class="nav-item active" >
+          <a class="nav-link" *ngIf="estaLogueado" (click)="logout()">Cerrar Sesion</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</ng-template>
+
+<ng-template #menuAdministrador>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">TPClinica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal'">Nuevo Turno</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/login'">Administrar medicos</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/login'">Ver reportes</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/login'">Turnos</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/principal/login'">Mi perfil</a>
+        </li>
+        <li class="nav-item active" >
+          <a class="nav-link" *ngIf="estaLogueado" (click)="logout()">Cerrar Sesion</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</ng-template>
+
+
+

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Usuario } from '../../entidades/usuario';
@@ -19,7 +19,7 @@ export class RegistroComponent {
   public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 1};
   public password2:string = '';
 
-  constructor(public router:Router,private us:UsuarioService){
+  constructor(public router:Router,private us:UsuarioService,private ngZone:NgZone){
     this.listaUsuarios =JSON.parse(localStorage.getItem('usuarios') || "[]");
   }
 
@@ -33,19 +33,39 @@ export class RegistroComponent {
   }
 
   CamposLlenos() {
-    return this.usuario.nombre && this.usuario.apellido && this.usuario.usuario  && this.password2 && this.usuario.password === this.password2;
+    return this.usuario.nombre && this.usuario.apellido && this.usuario.mail && this.usuario.usuario  && this.password2 && this.usuario.password === this.password2;
+  }
+
+  vaciarCampos(){
+    this.usuario.nombre='';
+    this.usuario.apellido='';
+    this.usuario.mail='';
+    this.usuario.usuario='';
+    this.usuario.password='';
   }
 
   public registrar(){
 
     if(this.CamposLlenos()){
 
-      this.router.navigateByUrl('/principal');
+      this.us.registrar(this.usuario).subscribe(
+
+        x=>{
+          console.log(x);
+          this.vaciarCampos();
+  
+          alert("Usuario creado exitosamente!")
+
+          this.ngZone.run(() => {
+          this.router.navigateByUrl('/principal/login');
+        });
+        
+      })
+
 
     } else {
       alert('Por favor, complete todos los campos y asegúrese de que las contraseñas coincidan.');
     }
-
 
     // this.us.listaUsuario.push(this.usuario);
     // localStorage.setItem('usuarios',JSON.stringify(this.us.listaUsuario));
