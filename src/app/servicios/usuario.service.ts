@@ -57,7 +57,7 @@ export class UsuarioService {
       
     }
 
-    public registrar(usuario:Usuario){
+    public registrarEnApi(usuario:Usuario){
       return this.http.post(this.API + "/insertar", usuario);
     }
 

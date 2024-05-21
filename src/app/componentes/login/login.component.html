@@ -35,6 +35,8 @@
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
           <form>
+
+            <app-loading [isLoading]="isLoading"></app-loading>
   
   
             <!-- Email input -->
@@ -74,7 +76,7 @@
       </div>
     </div>
 
-    <app-loading *ngIf="loading"></app-loading>
+    
 
     <div
       class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">

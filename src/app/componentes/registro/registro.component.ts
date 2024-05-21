@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Usuario } from '../../entidades/usuario';
 import { UsuarioService } from '../../servicios/usuario.service';
+import { Medico } from '../../entidades/medico';
 
 @Component({
   selector: 'app-registro',
@@ -18,9 +19,38 @@ export class RegistroComponent {
   listaUsuarios:Usuario[] = [];
   public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 1};
   public password2:string = '';
+  public medico:Medico = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 2, especialidad:'', dias_atencion:[],
+                          horario_atencion:'',especialidad_foto:null, perfil_foto:null };
+  
 
   constructor(public router:Router,private us:UsuarioService,private ngZone:NgZone){
     this.listaUsuarios =JSON.parse(localStorage.getItem('usuarios') || "[]");
+  }
+
+  diasSemana: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+
+  toggleDiaAtencion(dia: string) {
+    const index = this.medico.dias_atencion.indexOf(dia);
+    if (index === -1) {
+      this.medico.dias_atencion.push(dia);
+    } else {
+      this.medico.dias_atencion.splice(index, 1);
+    }
+  }
+
+  onFileChange(event: any, tipo: 'especialidad_foto' | 'perfil_foto') {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        if (tipo === 'especialidad_foto') {
+          this.medico.especialidad_foto = e.target.result;
+        } else if (tipo === 'perfil_foto') {
+          this.medico.perfil_foto = e.target.result;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
   }
 
 
@@ -48,7 +78,17 @@ export class RegistroComponent {
 
     if(this.CamposLlenos()){
 
-      this.us.registrar(this.usuario).subscribe(
+      if{
+        
+      }
+
+      if(this.usuario.tipo_usuario==2){
+        this.medico= {nombre: this.usuario.nombre,
+           apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 2, especialidad:'', dias_atencion:[],
+        horario_atencion:'',especialidad_foto:null, perfil_foto:null };
+      }
+
+      this.us.registrarEnApi(this.usuario).subscribe(
 
         x=>{
           console.log(x);

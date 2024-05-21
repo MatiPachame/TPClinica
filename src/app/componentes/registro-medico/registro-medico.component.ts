@@ -83,7 +83,7 @@ export class RegistroMedicoComponent {
 
     if(this.CamposLlenos()){
 
-      this.us.registrar(this.medico).subscribe(
+      this.us.registrarEnApi(this.medico).subscribe(
 
         x=>{
           console.log(x);

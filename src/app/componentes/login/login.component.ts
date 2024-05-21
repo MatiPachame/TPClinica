@@ -16,12 +16,13 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0};
   public listaUsuario:Usuario [] = [];
-  public loading:boolean = false;
+  public isLoading:boolean=false;
 
 
   constructor(private route:Router, private usuarioservices:UsuarioService){
 
     if(this.usuarioservices.estoyLogueado()){
+      //Si ya esta logueado, reenvia a bienvenida
       route.navigateByUrl('/principal/bienvenida');
     }
   }
@@ -36,7 +37,7 @@ export class LoginComponent {
     //   localStorage.setItem('usuarioLogueado', JSON.stringify(this.listaUsuario.filter(t=> t.nombre.toLowerCase == this.usuario.nombre.toLowerCase && t.password == this.usuario.password )[0]));
     
     
-    this.loading = true; // Mostrar el indicador de carga  
+    this.isLoading = true; // Mostrar el indicador de carga  
     this.usuarioservices.loginAPI(this.usuario).subscribe(
       x=>{
         
@@ -44,7 +45,7 @@ export class LoginComponent {
 
         if((<Usuario>x).usuario !=null)
           {
-            this.loading = false;
+            this.isLoading = false;
             this.usuarioservices.setLogueadoXApi(<Usuario>x);
 
             //Guardamos en el local storage el usuario logueado
