@@ -78,7 +78,7 @@
                   <input type="password" class="form-control form-control-lg" [(ngModel)]="password2" name="password2"required="required" />
                   <label class="form-label" for="form3Example4cdg">Repita su contraseña</label>
                 </div>
-
+                 <!-- Aqui elegimos el tipo de usuario para desplegar el menu correspondiente -->
                 <div data-mdb-input-init class="form-outline mb-4">
                   <select class="form-select" aria-label="Default select example" [(ngModel)]="usuario.tipo_usuario" name="tipo_usuario">
                     <option value="1">Paciente</option>
@@ -100,13 +100,17 @@
 
                 </div>
 
+
+
+
+
                 <ng-template #registroPaciente>
 
                 </ng-template>
 
                 <ng-template #registroMedico>
                   <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="text" class="form-control form-control-lg" [(ngModel)]="medico.especialidad" name="especialidad" required="required"/>
+                    <input type="text" class="form-control form-control-lg" [(ngModel)]="usuario.especialidad" name="especialidad" required="required"/>
                     <label class="form-label">Especialidad</label>
                 </div>
 
@@ -114,7 +118,7 @@
 
                     <div *ngFor="let dia of diasSemana">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [id]="dia" [value]="dia" (change)="toggleDiaAtencion(dia)" [checked]="medico.dias_atencion.includes(dia)">
+                        <input class="form-check-input" type="checkbox" [id]="dia" [value]="dia" (change)="toggleDiaAtencion(dia)" [checked]="usuario.dias_atencion.includes(dia)">
                         <label class="form-check-label" [for]="dia">
                           {{ dia }}
                         </label>
@@ -124,7 +128,7 @@
                   </div>
                 
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="text" class="form-control form-control-lg" [(ngModel)]="medico.horario_atencion" name="horario" required="required"/>
+                    <input type="text" class="form-control form-control-lg" [(ngModel)]="usuario.horario_atencion" name="horario" required="required"/>
                     <label class="form-label">Horario de atencion</label>
                 </div>
 

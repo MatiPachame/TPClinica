@@ -17,7 +17,8 @@ export class RegistroComponent {
   
 
   listaUsuarios:Usuario[] = [];
-  public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 1};
+  public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 1,especialidad:'', dias_atencion:[],
+  horario_atencion:'',especialidad_foto:null, perfil_foto:null};
   public password2:string = '';
   public medico:Medico = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 2, especialidad:'', dias_atencion:[],
                           horario_atencion:'',especialidad_foto:null, perfil_foto:null };
@@ -30,11 +31,11 @@ export class RegistroComponent {
   diasSemana: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
 
   toggleDiaAtencion(dia: string) {
-    const index = this.medico.dias_atencion.indexOf(dia);
+    const index = this.usuario.dias_atencion.indexOf(dia);
     if (index === -1) {
-      this.medico.dias_atencion.push(dia);
+      this.usuario.dias_atencion.push(dia);
     } else {
-      this.medico.dias_atencion.splice(index, 1);
+      this.usuario.dias_atencion.splice(index, 1);
     }
   }
 
@@ -66,33 +67,14 @@ export class RegistroComponent {
     return this.usuario.nombre && this.usuario.apellido && this.usuario.mail && this.usuario.usuario  && this.password2 && this.usuario.password === this.password2;
   }
 
-  vaciarCampos(){
-    this.usuario.nombre='';
-    this.usuario.apellido='';
-    this.usuario.mail='';
-    this.usuario.usuario='';
-    this.usuario.password='';
-  }
-
   public registrar(){
 
     if(this.CamposLlenos()){
-
-      if{
-        
-      }
-
-      if(this.usuario.tipo_usuario==2){
-        this.medico= {nombre: this.usuario.nombre,
-           apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 2, especialidad:'', dias_atencion:[],
-        horario_atencion:'',especialidad_foto:null, perfil_foto:null };
-      }
 
       this.us.registrarEnApi(this.usuario).subscribe(
 
         x=>{
           console.log(x);
-          this.vaciarCampos();
   
           alert("Usuario creado exitosamente!")
 

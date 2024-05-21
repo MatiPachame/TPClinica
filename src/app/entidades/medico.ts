@@ -7,5 +7,6 @@ export interface Medico extends Usuario{
     horario_atencion: string;
     especialidad_foto: string | ArrayBuffer | null;
     perfil_foto: string | ArrayBuffer | null;
+    
 
 }
