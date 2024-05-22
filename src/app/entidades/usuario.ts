@@ -8,7 +8,7 @@ export interface Usuario {
      nacimiento : Date;
      tipo_usuario:number;
      especialidad?:string;
-     dias_atencion: string[];
+     dias_atencion?: string[] | undefined;
     horario_atencion?: string;
     especialidad_foto?: string | ArrayBuffer | null;
     perfil_foto?: string | ArrayBuffer | null;

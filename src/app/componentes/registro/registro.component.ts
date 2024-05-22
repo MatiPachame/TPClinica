@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Usuario } from '../../entidades/usuario';
 import { UsuarioService } from '../../servicios/usuario.service';
-import { Medico } from '../../entidades/medico';
 
 @Component({
   selector: 'app-registro',
@@ -20,23 +19,25 @@ export class RegistroComponent {
   public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 1,especialidad:'', dias_atencion:[],
   horario_atencion:'',especialidad_foto:null, perfil_foto:null};
   public password2:string = '';
-  public medico:Medico = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 2, especialidad:'', dias_atencion:[],
-                          horario_atencion:'',especialidad_foto:null, perfil_foto:null };
   
 
   constructor(public router:Router,private us:UsuarioService,private ngZone:NgZone){
     this.listaUsuarios =JSON.parse(localStorage.getItem('usuarios') || "[]");
   }
 
-  diasSemana: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+  diasSemana: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
 
   toggleDiaAtencion(dia: string) {
-    const index = this.usuario.dias_atencion.indexOf(dia);
+
+    if(this.usuario.dias_atencion != undefined){
+      const index = this.usuario.dias_atencion.indexOf(dia);
     if (index === -1) {
       this.usuario.dias_atencion.push(dia);
     } else {
       this.usuario.dias_atencion.splice(index, 1);
     }
+    }
+    
   }
 
   onFileChange(event: any, tipo: 'especialidad_foto' | 'perfil_foto') {
@@ -45,9 +46,9 @@ export class RegistroComponent {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         if (tipo === 'especialidad_foto') {
-          this.medico.especialidad_foto = e.target.result;
+          this.usuario.especialidad_foto = e.target.result;
         } else if (tipo === 'perfil_foto') {
-          this.medico.perfil_foto = e.target.result;
+          this.usuario.perfil_foto = e.target.result;
         }
       };
       reader.readAsDataURL(file);
