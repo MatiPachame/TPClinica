@@ -17,12 +17,11 @@ export class RegistroComponent {
 
   listaUsuarios:Usuario[] = [];
   public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 1,especialidad:'', dias_atencion:[],
-  horario_atencion:'',especialidad_foto:null, perfil_foto:null};
+  horario_desde:0,horario_hasta:0,especialidad_foto:null, perfil_foto:null, autorizado: true};
   public password2:string = '';
   
 
   constructor(public router:Router,private us:UsuarioService,private ngZone:NgZone){
-    this.listaUsuarios =JSON.parse(localStorage.getItem('usuarios') || "[]");
   }
 
   diasSemana: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
@@ -72,6 +71,12 @@ export class RegistroComponent {
 
     if(this.CamposLlenos()){
 
+      if(this.usuario.tipo_usuario == 2 || 3){
+        this.usuario.autorizado = false;
+        
+      }
+        
+
       this.us.registrarEnApi(this.usuario).subscribe(
 
         x=>{
@@ -93,10 +98,7 @@ export class RegistroComponent {
     // this.us.listaUsuario.push(this.usuario);
     // localStorage.setItem('usuarios',JSON.stringify(this.us.listaUsuario));
     // this.us.listaUsuario=JSON.parse(JSON.stringify(this.us.listaUsuario));
-    
-
-  }
-
   
+  }
 
 }

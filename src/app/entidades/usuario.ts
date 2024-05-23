@@ -9,8 +9,10 @@ export interface Usuario {
      tipo_usuario:number;
      especialidad?:string;
      dias_atencion?: string[] | undefined;
-    horario_atencion?: string;
+    horario_desde?: number;
+    horario_hasta?: number;
     especialidad_foto?: string | ArrayBuffer | null;
     perfil_foto?: string | ArrayBuffer | null;
+    autorizado: boolean;
 
 }

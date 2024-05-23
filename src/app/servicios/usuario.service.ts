@@ -11,7 +11,7 @@ export class UsuarioService {
 
   private API:String = "https://matipachame-apiclinica.mdbgo.io";
 
-  public usuarioLogueado: Usuario = { nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0};
+  public usuarioLogueado: Usuario = { nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado: true};
 
   public listaUsuario: Usuario[] = [];
 

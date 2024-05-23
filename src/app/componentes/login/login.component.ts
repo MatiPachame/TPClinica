@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
     imports: [FormsModule, RouterModule, LoadingComponent, CommonModule]
 })
 export class LoginComponent {
-  public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0};
+  public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:false};
   public listaUsuario:Usuario [] = [];
   public isLoading:boolean=false;
 
@@ -36,6 +36,8 @@ export class LoginComponent {
     //   //guardamos usuario logueado
     //   localStorage.setItem('usuarioLogueado', JSON.stringify(this.listaUsuario.filter(t=> t.nombre.toLowerCase == this.usuario.nombre.toLowerCase && t.password == this.usuario.password )[0]));
     
+
+
     
     this.isLoading = true; // Mostrar el indicador de carga  
     this.usuarioservices.loginAPI(this.usuario).subscribe(
@@ -44,9 +46,14 @@ export class LoginComponent {
         
 
         if((<Usuario>x).usuario !=null)
+
+          this.isLoading = false;
+
           {
-            this.isLoading = false;
-            this.usuarioservices.setLogueadoXApi(<Usuario>x);
+            if((<Usuario>x).autorizado = false){ //Si el usuario no esta habilitado, no se loguea
+              alert("Su usuario aun no esta habilitado. Por favor contactarse con un administrador");
+            } else {
+              this.usuarioservices.setLogueadoXApi(<Usuario>x);
 
             //Guardamos en el local storage el usuario logueado
             localStorage.setItem('usuarioLogueado',JSON.stringify(this.usuario));
@@ -54,6 +61,10 @@ export class LoginComponent {
 
             //pasar a la pagina de bienvenida
             this.route.navigateByUrl('/principal/bienvenida');
+            }
+
+            
+            
           }
       }
     )
