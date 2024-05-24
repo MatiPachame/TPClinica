@@ -50,13 +50,13 @@ export class LoginComponent {
           this.isLoading = false;
 
           {
-            if((<Usuario>x).autorizado = false){ //Si el usuario no esta habilitado, no se loguea
+            if((<Usuario>x).autorizado == false){ //Si el usuario no esta habilitado, no se loguea
               alert("Su usuario aun no esta habilitado. Por favor contactarse con un administrador");
             } else {
               this.usuarioservices.setLogueadoXApi(<Usuario>x);
 
             //Guardamos en el local storage el usuario logueado
-            localStorage.setItem('usuarioLogueado',JSON.stringify(this.usuario));
+            localStorage.setItem('usuarioLogueado',JSON.stringify(<Usuario>x));
             
 
             //pasar a la pagina de bienvenida
@@ -69,6 +69,7 @@ export class LoginComponent {
       }
     )
     this.usuarioservices.estoyLogueado();
+    this.isLoading = false;
   }
 
 

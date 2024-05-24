@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Usuario } from '../../entidades/usuario';
 import { UsuarioService } from '../../servicios/usuario.service';
+import Compressor from 'compressorjs';
 
 @Component({
   selector: 'app-registro',
@@ -42,17 +43,25 @@ export class RegistroComponent {
   onFileChange(event: any, tipo: 'especialidad_foto' | 'perfil_foto') {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        if (tipo === 'especialidad_foto') {
-          this.usuario.especialidad_foto = e.target.result;
-        } else if (tipo === 'perfil_foto') {
-          this.usuario.perfil_foto = e.target.result;
-        }
-      };
-      reader.readAsDataURL(file);
+        new Compressor(file, {
+            quality: 0.6, // Ajusta la calidad de compresión (0-1)
+            success: (compressedResult) => {
+                const reader = new FileReader();
+                reader.onload = (e: any) => {
+                    if (tipo === 'especialidad_foto') {
+                        this.usuario.especialidad_foto = e.target.result;
+                    } else if (tipo === 'perfil_foto') {
+                        this.usuario.perfil_foto = e.target.result;
+                    }
+                };
+                reader.readAsDataURL(compressedResult);
+            },
+            error(err) {
+                console.log(err.message);
+            },
+        });
     }
-  }
+}
 
 
   validarExiste(){
@@ -74,13 +83,16 @@ export class RegistroComponent {
       if(this.usuario.tipo_usuario == 2 || 3){
         this.usuario.autorizado = false;
         
-      }
+      } 
+
+     
         
 
       this.us.registrarEnApi(this.usuario).subscribe(
 
         x=>{
           console.log(x);
+          localStorage.setItem('usuarioLogueado',JSON.stringify(<Usuario>x));
   
           alert("Usuario creado exitosamente!")
 
