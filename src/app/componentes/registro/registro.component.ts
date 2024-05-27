@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { Usuario } from '../../entidades/usuario';
 import { UsuarioService } from '../../servicios/usuario.service';
 import Compressor from 'compressorjs';
+//const Compressor = require('compressorjs');
 
 @Component({
   selector: 'app-registro',
