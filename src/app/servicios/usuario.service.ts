@@ -16,7 +16,7 @@ export class UsuarioService {
   public listaUsuario: Usuario[] = [];
 
   constructor(public http:HttpClient) {
-    this.listaUsuario = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    this.listaUsuario = JSON.parse(localStorage.getItem('usuarioLogueado') || '[]');
      this.setLogueado()
 
     // this.listaUsuario = JSON.parse(localStorage.getItem('usuarios') || '[]');
@@ -59,6 +59,10 @@ export class UsuarioService {
 
     public registrarEnApi(usuario:Usuario){
       return this.http.post(this.API + "/insertar", usuario);
+    }
+
+    public autorizarMedicos(usuario:Usuario[]){
+      return this.http.post(this.API + "/autorizar", usuario);
     }
 
 

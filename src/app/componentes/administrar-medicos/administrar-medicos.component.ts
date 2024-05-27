@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuComponent } from "../menu/menu.component";
+import { Usuario } from '../../entidades/usuario';
+import { UsuarioService } from '../../servicios/usuario.service';
 
 @Component({
     selector: 'app-administrar-medicos',
@@ -9,5 +11,22 @@ import { MenuComponent } from "../menu/menu.component";
     imports: [MenuComponent]
 })
 export class AdministrarMedicosComponent {
+    
+    public medicos:Usuario [] = [];
+
+
+
+    constructor(private usuarioservices:UsuarioService) {
+        
+        this.usuarioservices.autorizarMedicos(this.medicos).subscribe(
+            x=>{
+
+
+
+
+
+            }
+        )
+    }
 
 }

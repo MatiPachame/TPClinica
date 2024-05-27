@@ -1,0 +1,14 @@
+/* Forzar la aplicación de los estilos utilizando ::ng-deep */
+::ng-deep .navbar {
+    background-color: #3a5a40 !important;
+  }
+  
+  ::ng-deep .navbar .nav-link {
+    color: white !important;
+  }
+  
+  ::ng-deep .navbar .nav-link:hover {
+    color: lightgreen !important;
+  }
+  
+  
