@@ -40,7 +40,7 @@ export class UsuarioService {
   }
 
   public estoyLogueado(): boolean {
-    return this.usuarioLogueado.nombre != '';
+    return this.usuarioLogueado.usuario != '';
   }
 
   public setLogueado() {

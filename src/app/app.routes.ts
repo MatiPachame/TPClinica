@@ -15,28 +15,28 @@ import { ModificarHorariosComponent } from './componentes/modificar-horarios/mod
 import { ReportesComponent } from './componentes/reportes/reportes.component';
 import { PacientesComponent } from './componentes/pacientes/pacientes.component';
 import { CalendarioComponent } from './componentes/calendario/calendario.component';
+import { LogueadoNivel2Guard, LogueadoNivel3Guard,usuarioDeslogueadoGuard, usuarioLogueadoGuard } from './guards/usuario-logueado.guard';
 
 export const routes: Routes = [
 
-    {path:'principal', component:PrincipalComponent, children:[
-        {path:'login', component:LoginComponent},
-        {path:'registro', component:RegistroComponent},
-        {path:'bienvenida', component:BienvenidaComponent},
-        {path:'institucional', component:InstitucionalComponent}
+    {path:'principal', component:PrincipalComponent,children:[
+        {path:'login', component:LoginComponent, canActivate:[usuarioDeslogueadoGuard]},
+        {path:'registro', component:RegistroComponent,canActivate:[usuarioDeslogueadoGuard]},
+        {path:'institucional', component:InstitucionalComponent, canActivate:[usuarioDeslogueadoGuard]}
 
     ]},
 
-    {path:'bienvenida', component:BienvenidaComponent, children:[
+    {path:'bienvenida', component:BienvenidaComponent, canActivate:[usuarioLogueadoGuard], children:[
         {path:'nuevo_turno', component:NuevoTurnoComponent},
-        {path:'administrar_medicos', component:AdministrarMedicosComponent},
+        {path:'administrar_medicos', component:AdministrarMedicosComponent, canActivate:[LogueadoNivel3Guard]},
         {path:'historial', component:HistorialComponent},
         {path:'turnos', component:TurnosComponent},
         {path:'perfil', component:PerfilComponent},
-        {path:'aceptar-turnos', component:AceptarTurnosComponent},
-        {path:'modificar-horarios', component:ModificarHorariosComponent},
-        {path:'reportes', component:ReportesComponent},
-        {path:'pacientes', component:PacientesComponent},
-        {path:'calendario', component:CalendarioComponent},
+        {path:'aceptar-turnos', component:AceptarTurnosComponent,canActivate:[LogueadoNivel2Guard]},
+        {path:'modificar-horarios', component:ModificarHorariosComponent, canActivate:[LogueadoNivel2Guard]},
+        {path:'reportes', component:ReportesComponent, canActivate:[LogueadoNivel2Guard]},
+        {path:'pacientes', component:PacientesComponent, canActivate:[LogueadoNivel2Guard]},
+        {path:'calendario', component:CalendarioComponent, canActivate:[LogueadoNivel2Guard]},
     ]},
 
 
