@@ -21,7 +21,7 @@ export class AdministrarMedicosComponent {
         this.usuarioservices.autorizarMedicos(this.medicos).subscribe(
             x=>{
 
-
+                
 
 
 

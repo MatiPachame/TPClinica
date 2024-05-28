@@ -41,7 +41,7 @@ export class RegistroComponent {
     
   }
 
-  onFileChange(event: any, tipo: 'especialidad_foto' | 'perfil_foto') {
+  subirFoto(event: any, tipo: 'especialidad_foto' | 'perfil_foto') {
     const file = event.target.files[0];
     if (file) {
         new Compressor(file, {

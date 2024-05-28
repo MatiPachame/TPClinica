@@ -63,7 +63,7 @@
           <a class="nav-link" [routerLink]="'/principal/login'">Mi perfil</a>
         </li>
         <li class="nav-item active" >
-          <a class="nav-link" *ngIf="estaLogueado" (click)="logout()">Cerrar Sesion</a>
+          <a class="nav-link" type="button" *ngIf="estaLogueado" (click)="logout()">Cerrar Sesion</a>
         </li>
       </ul>
     </div>
@@ -100,7 +100,7 @@
           <a class="nav-link" [routerLink]="'/principal/login'">Mi perfil</a>
         </li>
         <li class="nav-item active" >
-          <a class="nav-link" *ngIf="estaLogueado" (click)="logout()">Cerrar Sesion</a>
+          <a class="nav-link" *ngIf="estaLogueado" type="button" (click)="logout()">Cerrar Sesion</a>
         </li>
       </ul>
     </div>
@@ -132,7 +132,7 @@
           <a class="nav-link" [routerLink]="'/principal/login'">Mi perfil</a>
         </li>
         <li class="nav-item active" >
-          <a class="nav-link" *ngIf="estaLogueado" (click)="logout()">Cerrar Sesion</a>
+          <a class="nav-link" *ngIf="estaLogueado" type="button" (click)="logout()">Cerrar Sesion</a>
         </li>
       </ul>
     </div>
