@@ -60,7 +60,7 @@ export class LoginComponent {
             
 
             //pasar a la pagina de bienvenida
-            this.route.navigateByUrl('/principal/bienvenida');
+            this.route.navigateByUrl('/bienvenida');
             }
 
             

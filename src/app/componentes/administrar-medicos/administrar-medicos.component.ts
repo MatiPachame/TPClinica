@@ -13,6 +13,7 @@ import { UsuarioService } from '../../servicios/usuario.service';
 export class AdministrarMedicosComponent {
     
     public medicos:Usuario [] = [];
+    public medicosAutorizar:boolean=false;
 
 
 
@@ -20,8 +21,6 @@ export class AdministrarMedicosComponent {
         
         this.usuarioservices.autorizarMedicos(this.medicos).subscribe(
             x=>{
-
-                
 
 
 
