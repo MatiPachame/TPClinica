@@ -41,27 +41,31 @@ export class RegistroComponent {
     
   }
 
-  subirFoto(event: any, tipo: 'especialidad_foto' | 'perfil_foto') {
-    const file = event.target.files[0];
+  subirFoto(event: Event, tipo: 'especialidad_foto' | 'perfil_foto') {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    
     if (file) {
         new Compressor(file, {
             quality: 0.6, // Ajusta la calidad de compresión (0-1)
-            success: (compressedResult) => {
+            success: (compressedResult: Blob) => {
                 const reader = new FileReader();
-                reader.onload = (e: any) => {
+                reader.onload = (e: ProgressEvent<FileReader>) => {
+                    const result = e.target?.result as string;
                     if (tipo === 'especialidad_foto') {
-                        this.usuario.especialidad_foto = e.target.result;
+                        this.usuario.especialidad_foto = result;
                     } else if (tipo === 'perfil_foto') {
-                        this.usuario.perfil_foto = e.target.result;
+                        this.usuario.perfil_foto = result;
                     }
                 };
                 reader.readAsDataURL(compressedResult);
             },
-            error(err) {
+            error(err: Error) {
                 console.log(err.message);
             },
         });
     }
+
 }
 
 
