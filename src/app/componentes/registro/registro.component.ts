@@ -45,26 +45,39 @@ export class RegistroComponent {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];
     
+    // if (file) {
+    //     new Compressor(file, {
+    //         quality: 0.6, // Ajusta la calidad de compresión (0-1)
+    //         success: (compressedResult: Blob) => {
+    //             const reader = new FileReader();
+    //             reader.onload = (e: ProgressEvent<FileReader>) => {
+    //                 const result = e.target?.result as string;
+    //                 if (tipo === 'especialidad_foto') {
+    //                     this.usuario.especialidad_foto = result;
+    //                 } else if (tipo === 'perfil_foto') {
+    //                     this.usuario.perfil_foto = result;
+    //                 }
+    //             };
+    //             reader.readAsDataURL(compressedResult);
+    //         },
+    //         error(err: Error) {
+    //             console.log(err.message);
+    //         },
+    //     });
+    // }
+
     if (file) {
-        new Compressor(file, {
-            quality: 0.6, // Ajusta la calidad de compresión (0-1)
-            success: (compressedResult: Blob) => {
-                const reader = new FileReader();
-                reader.onload = (e: ProgressEvent<FileReader>) => {
-                    const result = e.target?.result as string;
-                    if (tipo === 'especialidad_foto') {
-                        this.usuario.especialidad_foto = result;
-                    } else if (tipo === 'perfil_foto') {
-                        this.usuario.perfil_foto = result;
-                    }
-                };
-                reader.readAsDataURL(compressedResult);
-            },
-            error(err: Error) {
-                console.log(err.message);
-            },
-        });
-    }
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+          const result = e.target?.result as string;
+          if (tipo === 'especialidad_foto') {
+              this.usuario.especialidad_foto = result;
+          } else if (tipo === 'perfil_foto') {
+              this.usuario.perfil_foto = result;
+          }
+      };
+      reader.readAsDataURL(file);
+  }
 
 }
 

@@ -62,7 +62,7 @@ export class UsuarioService {
   }
 
   public autorizarMedicos(usuario: Usuario[]) {
-    return this.http.post(this.API + "/autorizar", usuario);
+    return this.http.post(this.API + "/autorizar_usuarios", usuario);
   }
 
 

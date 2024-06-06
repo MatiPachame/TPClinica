@@ -1,3 +1,5 @@
+
+
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
       <tr>
@@ -10,11 +12,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let medico of medicos">
         <td>
           <div class="d-flex align-items-center">
             <img
-                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                [src]="medico.perfil_foto"
                 alt=""
                 style="width: 45px; height: 45px"
                 class="rounded-circle"
@@ -23,19 +25,19 @@
         </td>
 
         <td>
-          <p class="fw-normal mb-1">Matias</p>
+          <p class="fw-normal mb-1" >{{medico.nombre}}</p>
         </td>
 
         <td>
-          <span class="badge badge-success rounded-pill d-inline">Active</span>
+          <span class="badge badge-success rounded-pill d-inline">{{medico.apellido}}</span>
+        </td>
+        {{medico.usuario}}
+        <td>
+          
         </td>
 
         <td>
-          Admin
-        </td>
-
-        <td>
-          123456
+          {{medico.password}}
         </td>
 
         <td>
