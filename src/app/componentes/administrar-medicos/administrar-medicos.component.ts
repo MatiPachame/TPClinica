@@ -23,7 +23,7 @@ export class AdministrarMedicosComponent {
 
     constructor(private usuarioservices:UsuarioService) {
         
-        this.usuarioservices.autorizarMedicos(this.medicos).subscribe(
+        this.usuarioservices.GetUsuariosAutorizar(this.medicos).subscribe(
             x=> {
 
                 if((<Usuario[]>x).length >=1){
@@ -32,6 +32,13 @@ export class AdministrarMedicosComponent {
                 
             }
         });
+    }
+
+    public autorizar(index: number){
+        var usuarioAutorizar = this.medicos[index];
+
+        usuarioAutorizar.autorizado = true;
+        this.usuarioservices.AutorizacionUsuario(usuarioAutorizar);
     }
 
 }

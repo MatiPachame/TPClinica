@@ -117,6 +117,8 @@ export class RegistroComponent {
           this.ngZone.run(() => {
           this.router.navigateByUrl('/principal/login');
         });
+
+        
         
       })
 
