@@ -13,6 +13,6 @@ export interface Usuario {
     horario_hasta?: number;
     especialidad_foto?: string | ArrayBuffer | null;
     perfil_foto?: string | ArrayBuffer | null;
-    autorizado: boolean;
+    autorizado: number;
 
 }

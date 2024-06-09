@@ -15,7 +15,7 @@ export class AdministrarMedicosComponent {
     
 
     public listMedicos: Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 1,especialidad:'', dias_atencion:[],
-    horario_desde:0,horario_hasta:0,especialidad_foto:null, perfil_foto:null, autorizado: true};
+    horario_desde:0,horario_hasta:0,especialidad_foto:null, perfil_foto:null, autorizado: 1};
     public medicos:Usuario [] = [];
     public medicosAutorizar:boolean=false;
 
@@ -35,10 +35,35 @@ export class AdministrarMedicosComponent {
     }
 
     public autorizar(index: number){
-        var usuarioAutorizar = this.medicos[index];
+        let usuarioAutorizar = this.medicos[index];
 
-        usuarioAutorizar.autorizado = true;
-        this.usuarioservices.AutorizacionUsuario(usuarioAutorizar);
+        usuarioAutorizar.autorizado = 1;
+        this.usuarioservices.AutorizacionUsuario(usuarioAutorizar).subscribe(
+            x=>{
+
+                alert("Usuario autorizado correctamente");
+
+            }
+        );
+            
     }
 
+    public Desautorizar(index: number){
+        let usuarioAutorizar = this.medicos[index];
+
+        usuarioAutorizar.autorizado = 0;
+        this.usuarioservices.AutorizacionUsuario(usuarioAutorizar).subscribe(
+            x=>{
+
+                alert("Usuario desautorizado correctamente"); 
+                
+            }
+        );
+            
+    }
+
+
+
 }
+
+

@@ -41,7 +41,7 @@ export class MenuComponent {
 
 
     this.listaUsuario = [];
-    this.usuarioservices.usuarioLogueado = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0,autorizado:false};
+    this.usuarioservices.usuarioLogueado = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0,autorizado:1};
     this.estaLogueado=false;
 
     //Reedireaccionamos a principal

@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Usuario } from '../../entidades/usuario';
 import { UsuarioService } from '../../servicios/usuario.service';
-import Compressor from 'compressorjs';
-//const Compressor = require('compressorjs');
 
 @Component({
   selector: 'app-registro',
@@ -18,12 +16,13 @@ export class RegistroComponent {
   
 
   listaUsuarios:Usuario[] = [];
-  public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 1,especialidad:'', dias_atencion:[],
-  horario_desde:0,horario_hasta:0,especialidad_foto:null, perfil_foto:null, autorizado: true};
+  public usuario:Usuario;
   public password2:string = '';
   
 
   constructor(public router:Router,private us:UsuarioService,private ngZone:NgZone){
+    this.usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 1,especialidad:'', dias_atencion:[],
+      horario_desde:0,horario_hasta:0,especialidad_foto:null, perfil_foto:null, autorizado:1};
   }
 
   diasSemana: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
@@ -94,33 +93,40 @@ export class RegistroComponent {
     return this.usuario.nombre && this.usuario.apellido && this.usuario.mail && this.usuario.usuario  && this.password2 && this.usuario.password === this.password2;
   }
 
+
   public registrar(){
+
 
     if(this.CamposLlenos()){
 
-      if(this.usuario.tipo_usuario == 2 || 3){
-        this.usuario.autorizado = false;
-        
-      } 
+      if(this.usuario.tipo_usuario != 1)
+        this.usuario.autorizado=0;
+      else
+      this.usuario.autorizado=1;
 
-     
-        
 
+      localStorage.setItem('usuarioLogueado',JSON.stringify(this.usuario));
       this.us.registrarEnApi(this.usuario).subscribe(
 
         x=>{
           console.log(x);
-          localStorage.setItem('usuarioLogueado',JSON.stringify(<Usuario>x));
+          //localStorage.setItem('usuarioLogueado',JSON.stringify(<Usuario>x));
   
-          alert("Usuario creado exitosamente!")
+          alert("Usuario creado exitosamente!");
 
           this.ngZone.run(() => {
           this.router.navigateByUrl('/principal/login');
         });
+        
 
-        
-        
-      })
+        },
+        error=>{
+        if (error.status === 400) {
+          alert("Error: " + error.error.error);
+        } else {
+          alert("Ocurrió un error al crear el usuario. Por favor, inténtalo nuevamente.");
+        }}
+      );
 
 
     } else {

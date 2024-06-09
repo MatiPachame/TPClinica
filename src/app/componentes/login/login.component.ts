@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
     imports: [FormsModule, RouterModule, LoadingComponent, CommonModule]
 })
 export class LoginComponent {
-  public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:false};
+  public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1};
   public listaUsuario:Usuario [] = [];
   public isLoading:boolean=false;
 
@@ -50,7 +50,7 @@ export class LoginComponent {
           this.isLoading = false;
 
           {
-            if((<Usuario>x).autorizado == false){ //Si el usuario no esta habilitado, no se loguea
+            if((<Usuario>x).autorizado == 0){ //Si el usuario no esta habilitado, no se loguea
               alert("Su usuario aun no esta habilitado. Por favor contactarse con un administrador");
             } else {
               this.usuarioservices.setLogueadoXApi(<Usuario>x);
