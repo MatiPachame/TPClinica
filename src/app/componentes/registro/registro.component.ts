@@ -26,18 +26,29 @@ export class RegistroComponent {
   }
 
   diasSemana: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
+  diasSeleccionados: boolean[] = Array(5).fill(false);
 
-  toggleDiaAtencion(dia: string) {
+  // toggleDiaAtencion(dia: string) {
 
-    if(this.usuario.dias_atencion != undefined){
-      const index = this.usuario.dias_atencion.indexOf(dia);
-    if (index === -1) {
-      this.usuario.dias_atencion.push(dia);
-    } else {
-      this.usuario.dias_atencion.splice(index, 1);
-    }
-    }
+  //   if(this.usuario.dias_atencion != undefined){
+  //     const index = this.usuario.dias_atencion.indexOf(dia);
+  //   if (index === -1) {
+  //     this.usuario.dias_atencion.push(dia);
+  //   } else {
+  //     this.usuario.dias_atencion.splice(index, 1);
+  //   }
+  //   }
     
+  // }
+
+  booleanoDias(index: number, event: any) {
+    this.diasSeleccionados[index] = event.target.checked;
+    this.cargarDias();
+  }
+
+  cargarDias() {
+    // return this.usuario.dias_atencion = this.diasSeleccionados.filter((dia, index) => this.diasSeleccionados[index]);
+    return this.usuario.dias_atencion = this.diasSeleccionados.map(dia => dia || false);
   }
 
   subirFoto(event: Event, tipo: 'especialidad_foto' | 'perfil_foto') {
@@ -105,7 +116,7 @@ export class RegistroComponent {
       this.usuario.autorizado=1;
 
 
-      localStorage.setItem('usuarioLogueado',JSON.stringify(this.usuario));
+      // localStorage.setItem('usuarioLogueado',JSON.stringify(this.usuario));
       this.us.registrarEnApi(this.usuario).subscribe(
 
         x=>{

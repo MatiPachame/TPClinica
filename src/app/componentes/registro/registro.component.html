@@ -95,7 +95,7 @@
                       <label class="form-label" for="form3Example4cdg">Especialidad</label>
                   </div>
 
-                <div class="mb-3">
+                <!-- <div class="mb-3">
 
                     <div *ngFor="let dia of diasSemana">
                       <div class="form-check">
@@ -106,6 +106,15 @@
                       </div>
                     </div>
                     <label for="diasAtencion" class="form-label">Días de Atención:</label>
+                  </div> -->
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="diasAtencion" class="form-label">Días de Atención:</label>
+                    <div *ngFor="let dia of diasSemana; let i = index">
+                      <label>
+                        <input type="checkbox" (change)="booleanoDias(i, $event)" [checked]="diasSeleccionados[i]" /> {{ dia }}
+                      </label>
+                    </div>
                   </div>
                 
                 <div data-mdb-input-init class="form-outline mb-4">
@@ -145,9 +154,7 @@
                   <input  type="button" data-mdb-button-init
                     data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" (click)="registrar()" value="Registrar">
                 </div>
-
-                <!-- <p class="text-center text-muted mt-5 mb-0">Eres medico de la institucion? <a [routerLink]="'/principal/registro_medico'"
-                    class="fw-bold text-body"><u>Registrate aqui</u></a></p>     -->
+    
 
 
               </form>
