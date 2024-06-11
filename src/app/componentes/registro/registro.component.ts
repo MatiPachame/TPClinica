@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgZone } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Usuario } from '../../entidades/usuario';
 import { UsuarioService } from '../../servicios/usuario.service';
@@ -8,11 +8,17 @@ import { UsuarioService } from '../../servicios/usuario.service';
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
+
+  public formu:FormGroup = new FormGroup({
+
+    nombre:new FormControl(''),
+
+  });
   
 
   listaUsuarios:Usuario[] = [];
@@ -28,19 +34,6 @@ export class RegistroComponent {
   diasSemana: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
   diasSeleccionados: boolean[] = Array(5).fill(false);
 
-  // toggleDiaAtencion(dia: string) {
-
-  //   if(this.usuario.dias_atencion != undefined){
-  //     const index = this.usuario.dias_atencion.indexOf(dia);
-  //   if (index === -1) {
-  //     this.usuario.dias_atencion.push(dia);
-  //   } else {
-  //     this.usuario.dias_atencion.splice(index, 1);
-  //   }
-  //   }
-    
-  // }
-
   booleanoDias(index: number, event: any) {
     this.diasSeleccionados[index] = event.target.checked;
     this.cargarDias();
@@ -55,26 +48,6 @@ export class RegistroComponent {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];
     
-    // if (file) {
-    //     new Compressor(file, {
-    //         quality: 0.6, // Ajusta la calidad de compresión (0-1)
-    //         success: (compressedResult: Blob) => {
-    //             const reader = new FileReader();
-    //             reader.onload = (e: ProgressEvent<FileReader>) => {
-    //                 const result = e.target?.result as string;
-    //                 if (tipo === 'especialidad_foto') {
-    //                     this.usuario.especialidad_foto = result;
-    //                 } else if (tipo === 'perfil_foto') {
-    //                     this.usuario.perfil_foto = result;
-    //                 }
-    //             };
-    //             reader.readAsDataURL(compressedResult);
-    //         },
-    //         error(err: Error) {
-    //             console.log(err.message);
-    //         },
-    //     });
-    // }
 
     if (file) {
       const reader = new FileReader();

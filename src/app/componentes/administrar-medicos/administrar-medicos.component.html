@@ -37,15 +37,7 @@
 
         <td>
           <button *ngIf="medico.autorizado==0" type="button" class="btn btn-success" (click)="autorizar(i)">Autorizar</button>
-          <!-- <button *ngIf="medico.autorizado==0" type="button" class="btn btn-link btn-sm btn-rounded" (click)="autorizar(i)">
-            Autorizar
-          </button> -->
-
           <button *ngIf="medico.autorizado==1" type="button" class="btn btn-danger" (click)="Desautorizar(i)">Desautorizar</button>
-          <!-- <button *ngIf="medico.autorizado==1"type="button" class="btn btn-link btn-sm btn-rounded" (click)="Desautorizar(i)">
-            Desautorizar
-          </button>
-        </td> -->
       </tr>
     </tbody>
   </table>
