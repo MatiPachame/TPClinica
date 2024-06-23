@@ -1,1 +1,25 @@
-<p>nuevo-turno works!</p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Especialidad</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Opcion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let turno of this.disponibilidad | quitarusados: turnosusados, let i = index" >
+        <td>{{turno.nombre}}</td>
+        <td>{{turno.apellido}}</td>
+        <td>{{turno.especialidad}}</td>
+        <td>{{turno.fecha | date:'fullDate'}}</td>
+        <td>{{turno.hora}}:00</td>
+        <td>
+            <button  type="button" class="btn btn-success" (click)="tomarTurno(i)">Tomar Turno</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

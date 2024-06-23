@@ -3,6 +3,7 @@ import { Usuario } from '../entidades/usuario';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Disponibilidad } from '../clases/disponibilidad';
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +74,12 @@ export class UsuarioService {
     return this.http.post(this.API + "/get_disponibilidad", usuario);
   }
 
+  public nuevoTurno(usuario: Disponibilidad){
+    return this.http.post(this.API + "/tomar_turno", usuario);
+  }
 
+  public GetTurnosTomados(usuario: Disponibilidad[]) {
+    return this.http.post(this.API + "/get_turnos_tomados", usuario);
+  }
 
 }
