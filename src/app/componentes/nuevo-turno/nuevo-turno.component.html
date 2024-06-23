@@ -1,3 +1,10 @@
+<br>
+
+<div class="form-group">
+    <input type="text" class="form-control form-control-lg" [(ngModel)]="filtroEspecialidad" placeholder="Ingrese especialidad">
+  </div>
+  
+  <br>
 
   <table class="table">
     <thead>
@@ -11,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let turno of this.disponibilidad | quitarusados: turnosusados, let i = index" >
+      <tr *ngFor="let turno of disponibilidad | filtromeds:filtroEspecialidad | quitarusados: turnosusados, let i = index" >
         <td>{{turno.nombre}}</td>
         <td>{{turno.apellido}}</td>
         <td>{{turno.especialidad}}</td>

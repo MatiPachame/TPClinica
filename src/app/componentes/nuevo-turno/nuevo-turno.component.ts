@@ -4,13 +4,16 @@ import { Usuario } from '../../entidades/usuario';
 import { UsuarioService } from '../../servicios/usuario.service';
 import { Disponibilidad } from '../../clases/disponibilidad';
 import { QuitarusadosPipe } from "../../pipe/quitarusados.pipe";
+import { FiltromedsPipe } from "../../pipe/filtromeds.pipe";
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-nuevo-turno',
     standalone: true,
     templateUrl: './nuevo-turno.component.html',
     styleUrl: './nuevo-turno.component.css',
-    imports: [CommonModule, QuitarusadosPipe]
+    imports: [CommonModule, QuitarusadosPipe, FiltromedsPipe, FormsModule, RouterModule]
 })
 export class NuevoTurnoComponent {
   public usuario:Usuario = {id: 0,nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1};
@@ -18,6 +21,7 @@ export class NuevoTurnoComponent {
   public medicos:Usuario [] = [];
   public disponibilidad:Disponibilidad [] = [];
   public turnosusados:Array<Disponibilidad> = [];
+  public filtroEspecialidad: string = '';
 
   
 
