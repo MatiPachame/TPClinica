@@ -15,5 +15,6 @@ export interface Usuario {
     especialidad_foto?: string | ArrayBuffer | null;
     perfil_foto?: string | ArrayBuffer | null;
     autorizado: number;
+    id_medico?: number;
 
 }

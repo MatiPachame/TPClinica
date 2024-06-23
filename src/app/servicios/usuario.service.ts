@@ -69,6 +69,10 @@ export class UsuarioService {
     return this.http.post(this.API + "/autorizacion_usuario", usuario);
   }
 
+  public GetDisponibilidadMedicos(usuario: Usuario[]) {
+    return this.http.post(this.API + "/get_disponibilidad", usuario);
+  }
+
 
 
 }
