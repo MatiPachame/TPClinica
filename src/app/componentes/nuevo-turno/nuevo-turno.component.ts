@@ -33,6 +33,7 @@ export class NuevoTurnoComponent {
     
           if((<Usuario[]>x).length >=1){
               console.log("Se han encontrado medicos/admins");
+              console.log("Medicos/admins encontrados:", x); // Verificar datos recibidos
               this.medicos = Object.assign([], x);
               this.sacarUsados(); 
           }
@@ -58,12 +59,24 @@ export class NuevoTurnoComponent {
     const year = date.getFullYear();
     const month = ('0' + (date.getMonth() + 1)).slice(-2); // Añadir cero a la izquierda si es necesario
     const day = ('0' + date.getDate()).slice(-2);
-    const hours = ('0' + date.getHours()).slice(-2);
-    const minutes = ('0' + date.getMinutes()).slice(-2);
-    const seconds = ('0' + date.getSeconds()).slice(-2);
+    const hours = '00';
+    const minutes = '00';
+    const seconds = '00';
   
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  }
+}
+
+
+  // public formatDateForMySQL(date: Date): string {
+  //   const year = date.getFullYear();
+  //   const month = ('0' + (date.getMonth() + 1)).slice(-2); // Añadir cero a la izquierda si es necesario
+  //   const day = ('0' + date.getDate()).slice(-2);
+  //   const hours = ('0' + date.getHours()).slice(-2);
+  //   const minutes = ('0' + date.getMinutes()).slice(-2);
+  //   const seconds = ('0' + date.getSeconds()).slice(-2);
+  
+  //   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  // }
 
   public buscarDisponibilidad(){
     const diasSemana = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes'];
@@ -72,6 +85,7 @@ export class NuevoTurnoComponent {
     for (let i = 0; i < 14; i++) {
         const diaActual = new Date();
         diaActual.setDate(hoy.getDate() + i);
+        diaActual.setHours(0, 0, 0, 0); // Establecer la hora en 00:00:00
         const diaSemanaIndex = (diaActual.getDay() + 6) % 7; // Convertir el índice del día (0-6) para empezar con lunes en 0
 
         if (diaSemanaIndex >= 5) {
@@ -84,6 +98,7 @@ export class NuevoTurnoComponent {
                 const hasta = medico.horario_hasta ?? 24; // Default a 24 si es undefined
 
                 for (let hora = desde; hora < hasta; hora++) {
+
                     this.disponibilidad.push({
                         id_medico: medico.id_medico,
                         id_usuario: this.usuario.id,
@@ -99,15 +114,21 @@ export class NuevoTurnoComponent {
         });
     }
 
+    console.log('Disponibilidad final:', this.disponibilidad);
     return this.disponibilidad;
 }
 
-tomarTurno(index: number){
+tomarTurno(turno: Disponibilidad){
+    // console.log('Índice:', index);
+    console.log('Longitud del array disponibilidad:', this.disponibilidad.length);
 
-  let turnoTomado = this.disponibilidad[index];
+
+  // let turnoTomado = this.disponibilidad[index];
+
+  console.log('Turno tomado:', turno);
 
 
-         this.usuarioservices.nuevoTurno(turnoTomado).subscribe(
+         this.usuarioservices.nuevoTurno(turno).subscribe(
              x=>{
 
                 alert("Turno tomado correctamente");

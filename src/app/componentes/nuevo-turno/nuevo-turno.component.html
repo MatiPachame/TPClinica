@@ -18,14 +18,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let turno of disponibilidad | filtromeds:filtroEspecialidad | quitarusados: turnosusados, let i = index" >
+      <tr *ngFor="let turno of disponibilidad | filtromeds:filtroEspecialidad | quitarusados: turnosusados" >
         <td>{{turno.nombre}}</td>
         <td>{{turno.apellido}}</td>
         <td>{{turno.especialidad}}</td>
         <td>{{turno.fecha | date:'fullDate'}}</td>
         <td>{{turno.hora}}:00</td>
         <td>
-            <button  type="button" class="btn btn-success" (click)="tomarTurno(i)">Tomar Turno</button>
+            <button  type="button" class="btn btn-success" (click)="tomarTurno(turno)">Tomar Turno</button>
         </td>
       </tr>
     </tbody>
