@@ -66,14 +66,11 @@ export class LoginComponent {
             //pasar a la pagina de bienvenida
             this.route.navigateByUrl('/bienvenida');
             }
-            
-        }
-            
 
+        }
+                     
             
-            
-          }
-      //}
+      }
     )
     this.usuarioservices.estoyLogueado();
     this.isLoading = false;
