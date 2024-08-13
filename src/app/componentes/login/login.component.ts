@@ -49,7 +49,7 @@ export class LoginComponent {
         // if((<Usuario>x).usuario !=null)
         //   {
 
-        localStorage.setItem("UserToken",x.toString());
+        localStorage.setItem("UsuarioToken",x.toString());
         var decode = jwtDecode(x.toString());
         if((<any>((<any>decode).data)).usuario !=null) {
           
