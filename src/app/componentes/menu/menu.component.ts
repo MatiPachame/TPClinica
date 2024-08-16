@@ -24,6 +24,8 @@ export class MenuComponent {
 
     if(this.usuarioservices.usuarioLogueado.usuario != '' )
       this.estaLogueado=true;
+
+    //Si hay, se guarda en listaUsuario el usuario que este logueado desde el LocalStorage
       this.listaUsuario = JSON.parse(localStorage.getItem('usuarioLogueado') || '[]');
 
 

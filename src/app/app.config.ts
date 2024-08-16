@@ -11,8 +11,8 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
           config: {
               tokenGetter: tokenGetter,
-              allowedDomains: ["example.com"],
-              disallowedRoutes: ["http://example.com/examplebadroute/"],
+              allowedDomains: ["localhost:4200"],
+              disallowedRoutes: ["http://localhost:4200/login/"],
           },
       }),
   ), provideHttpClient(withInterceptorsFromDi())]
