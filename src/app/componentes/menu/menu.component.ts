@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { Usuario } from '../../entidades/usuario';
 import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../servicios/usuario.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-menu',
@@ -16,6 +17,7 @@ export class MenuComponent {
   public listaUsuario:Usuario [] = [];
   public estaLogueado:boolean=false;
   private route: Router = new Router;
+  tipoUsuario: number | null = null;
   
 
   constructor(public usuarioservices:UsuarioService){
@@ -26,7 +28,20 @@ export class MenuComponent {
       this.estaLogueado=true;
 
     //Si hay, se guarda en listaUsuario el usuario que este logueado desde el LocalStorage
-      this.listaUsuario = JSON.parse(localStorage.getItem('usuarioLogueado') || '[]');
+      // this.listaUsuario = JSON.parse(localStorage.getItem('TokenUsuario') || '[]');
+
+      // Obtener el token del local storage
+  const token = localStorage.getItem('TokenUsuario');
+
+  if (token) {
+    // Decodificar el token
+    const decodedToken: any = jwtDecode(token);
+
+    // Extraer el tipo de usuario del token decodificado
+    const tipoUsuario = decodedToken.data.tipo_usuario;
+
+
+
 
 
 
@@ -37,6 +52,7 @@ export class MenuComponent {
     //if(this.listaUsuario.length>0)
       //this.estaLogueado=true;
   }
+}
     public logout(){
     //Vaciamos el local storage de la sesion iniciada
     localStorage.removeItem('usuarioLogueado');

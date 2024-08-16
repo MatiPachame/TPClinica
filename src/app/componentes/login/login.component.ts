@@ -39,7 +39,7 @@ export class LoginComponent {
         if((<any>((<any>decode).data)).usuario !=null) {
           
           this.isLoading = false;
-            if((<any>decode).autorizado == 0){ //Si el usuario no esta habilitado, no se loguea
+            if((<any>((<any>decode).data)).autorizado == 0){ //Si el usuario no esta habilitado, no se loguea
               alert("Su usuario aun no esta habilitado. Por favor contactarse con un administrador");
             } else {
             // this.usuarioservices.setLogueadoXApi(<Usuario>x);

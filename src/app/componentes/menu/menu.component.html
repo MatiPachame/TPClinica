@@ -2,15 +2,15 @@
 
 </div>
 
-<div *ngIf="this.usuarioservices.usuarioLogueado.tipo_usuario == 1 then menuPaciente">
+<div *ngIf="tipoUsuario == 1 then menuPaciente">
 
 </div>
 
-<div *ngIf="this.usuarioservices.usuarioLogueado.tipo_usuario == 2 then menuMedico">
+<div *ngIf="tipoUsuario == 2 then menuMedico">
 
 </div>
 
-<div *ngIf="this.usuarioservices.usuarioLogueado.tipo_usuario == 3 then menuAdministrador">
+<div *ngIf="tipoUsuario == 3 then menuAdministrador">
 
 </div>
 
