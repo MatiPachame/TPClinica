@@ -19,14 +19,16 @@ import { LogueadoNivel2Guard, LogueadoNivel3Guard,usuarioDeslogueadoGuard, usuar
 
 export const routes: Routes = [
 
-    {path:'principal', component:PrincipalComponent,children:[
+    // {path:'principal', component:PrincipalComponent,children:[
+    {path:'principal', loadComponent:() => import('./componentes/principal/principal.component').then(l => l.PrincipalComponent),children:[
         {path:'login', component:LoginComponent, canActivate:[usuarioDeslogueadoGuard]},
         {path:'registro', component:RegistroComponent,canActivate:[usuarioDeslogueadoGuard]},
         {path:'institucional', component:InstitucionalComponent, canActivate:[usuarioDeslogueadoGuard]}
 
     ]},
 
-    {path:'bienvenida', component:BienvenidaComponent, canActivate:[usuarioLogueadoGuard], children:[
+    // {path:'bienvenida', component:BienvenidaComponent, canActivate:[usuarioLogueadoGuard], children:[
+        {path:'bienvenida', loadComponent:() => import('./componentes/bienvenida/bienvenida.component').then(l => l.BienvenidaComponent), canActivate:[usuarioLogueadoGuard], children:[
         {path:'nuevo_turno', component:NuevoTurnoComponent},
         {path:'administrar_medicos', component:AdministrarMedicosComponent, canActivate:[LogueadoNivel3Guard]},
         {path:'historial', component:HistorialComponent},
