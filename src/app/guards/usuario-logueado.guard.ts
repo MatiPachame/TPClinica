@@ -13,6 +13,8 @@ export const usuarioDeslogueadoGuard: CanActivateFn = (route, state) => {
 
   var serv = inject(UsuarioService);
 
+  // console.log(serv.decode.data);
+
    return serv.usuarioLogueado.usuario == '';
 };
 

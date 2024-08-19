@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Disponibilidad } from '../clases/disponibilidad';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class UsuarioService {
   public usuarioLogueado: Usuario = { nombre: '', apellido: '', mail: '', nacimiento: new Date(), usuario: '', password: '', tipo_usuario: 0, autorizado: 1 };
 
   public listaUsuario: Usuario[] = [];
+
+  public decode: any;
 
   constructor(public http: HttpClient) {
     this.listaUsuario = JSON.parse(localStorage.getItem('usuarioLogueado') || '[]');
@@ -45,9 +48,13 @@ export class UsuarioService {
   }
 
   public setLogueado() {
-    if (localStorage.getItem('usuarioLogueado') ?? '' != '')
-      this.usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado') ?? '');
-  }
+    if (localStorage.getItem('UsuarioToken') ?? '' != ''){
+      this.decode = jwtDecode<any>(localStorage.getItem('UsuarioToken') ?? '');
+
+      this.usuarioLogueado = this.decode.data;
+    }
+    }
+     
 
   public loginAPI(usuario: Usuario) {
     return this.http.post(this.API + "/login", usuario);

@@ -17,7 +17,7 @@ export class MenuComponent {
   public listaUsuario:Usuario [] = [];
   public estaLogueado:boolean=false;
   private route: Router = new Router;
-  tipoUsuario: number | null = null;
+  public tipoUsuario: number | null = null;
   
 
   constructor(public usuarioservices:UsuarioService){
@@ -27,18 +27,22 @@ export class MenuComponent {
     if(this.usuarioservices.usuarioLogueado.usuario != '' )
       this.estaLogueado=true;
 
+
+
     //Si hay, se guarda en listaUsuario el usuario que este logueado desde el LocalStorage
       // this.listaUsuario = JSON.parse(localStorage.getItem('TokenUsuario') || '[]');
 
+
+
       // Obtener el token del local storage
-  const token = localStorage.getItem('TokenUsuario');
+  const token = localStorage.getItem('UsuarioToken');
 
   if (token) {
     // Decodificar el token
-    const decodedToken: any = jwtDecode(token);
+    var decode = jwtDecode<any>(token);
 
     // Extraer el tipo de usuario del token decodificado
-    const tipoUsuario = decodedToken.data.tipo_usuario;
+    var tipoUsuario = decode.data.tipo_usuario;
 
 
 
@@ -55,7 +59,7 @@ export class MenuComponent {
 }
     public logout(){
     //Vaciamos el local storage de la sesion iniciada
-    localStorage.removeItem('usuarioLogueado');
+    localStorage.removeItem('UsuarioToken');
 
 
     this.listaUsuario = [];

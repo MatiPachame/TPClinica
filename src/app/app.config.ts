@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
           config: {
               tokenGetter: tokenGetter,
               allowedDomains: ["localhost:4200"],
-              disallowedRoutes: ["http://localhost:4200/login/"],
+              disallowedRoutes: ["http://localhost:4200/login/", "http://localhost:4200/usuario/", "http://localhost:4200/usuario-logueado/" ],
           },
       }),
   ), provideHttpClient(withInterceptorsFromDi())]

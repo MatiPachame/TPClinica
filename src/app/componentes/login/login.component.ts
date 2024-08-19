@@ -16,6 +16,7 @@ import { jwtDecode, JwtPayload } from "jwt-decode";
 })
 export class LoginComponent {
   public usuario:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1};
+  public data:Usuario = {nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1};
   public listaUsuario:Usuario [] = [];
   public isLoading:boolean=false;
 
@@ -33,17 +34,31 @@ export class LoginComponent {
     this.isLoading = true; // Mostrar el indicador de carga  
     this.usuarioservices.loginAPI(this.usuario).subscribe(
       x=>{
+
+        console.log("Token recibido:" , x);
         
+
+        //Guardamos el token recibido en el Local Storage
         localStorage.setItem("UsuarioToken",x.toString());
-        var decode = jwtDecode(x.toString());
-        if((<any>((<any>decode).data)).usuario !=null) {
+
+        //Decodifica el token
+        var decode = jwtDecode<any>(x.toString());
+
+
+        //Verificamos que haya un usuario dentro del token
+        if(decode.data.usuario !=null) {
+
+
           
           this.isLoading = false;
-            if((<any>((<any>decode).data)).autorizado == 0){ //Si el usuario no esta habilitado, no se loguea
+            if(decode.data.autorizado == 0){ //Si el usuario no esta habilitado, no se loguea
               alert("Su usuario aun no esta habilitado. Por favor contactarse con un administrador");
             } else {
             // this.usuarioservices.setLogueadoXApi(<Usuario>x);
-
+            
+            //Si esta autorizado, redirige a bienvenida
+            this.usuarioservices.setLogueado();
+            
             //pasar a la pagina de bienvenida
             this.route.navigateByUrl('/bienvenida');
             }
@@ -53,7 +68,7 @@ export class LoginComponent {
             
       }
     )
-    //this.usuarioservices.estoyLogueado();
+    this.usuarioservices.estoyLogueado();
     this.isLoading = false;
   }
 
