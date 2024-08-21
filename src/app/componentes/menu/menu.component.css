@@ -10,5 +10,40 @@
   ::ng-deep .navbar .nav-link:hover {
     color: lightgreen !important;
   }
+
+  /* Fondo degradado similar */
+.navbar {
+  background: linear-gradient(90deg, rgb(18, 110, 52), rgb(65, 111, 134));
+  border-bottom: 2px solid #84fab0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilo de los enlaces */
+.navbar a {
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+/* Hover Effects para los enlaces */
+.navbar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+/* Para alinear los elementos */
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Ajuste de la altura del nav */
+.navbar {
+  height: 60px;
+  padding: 0 20px;
+}
+
   
   

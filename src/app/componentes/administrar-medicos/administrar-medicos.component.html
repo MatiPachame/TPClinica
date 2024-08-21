@@ -1,5 +1,21 @@
 
 
+<div>
+  <h1>Autorizacion de Medicos</h1>
+  
+</div>
+
+  <!-- Contenedor para el PDF -->
+  <div id="listamed" style="display: none;">
+    <h1>Lista de Médicos</h1>
+    <ul>
+      <li *ngFor="let medico of medicos, let i = index">
+        {{medico.nombre}} - {{medico.especialidad}}
+      </li>
+    </ul>
+  </div>
+  
+
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
       <tr>
@@ -41,3 +57,6 @@
       </tr>
     </tbody>
   </table>
+
+
+  <button type="button" class="btn btn-success" (click)="exportAsPDF('listamed')">Descargar Pdf</button>

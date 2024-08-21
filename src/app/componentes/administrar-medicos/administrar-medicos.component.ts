@@ -3,6 +3,7 @@ import { MenuComponent } from "../menu/menu.component";
 import { Usuario } from '../../entidades/usuario';
 import { UsuarioService } from '../../servicios/usuario.service';
 import { CommonModule } from '@angular/common';
+import { PasstopdfService } from '../../servicios/passtopdf.service';
 
 @Component({
     selector: 'app-administrar-medicos',
@@ -21,7 +22,7 @@ export class AdministrarMedicosComponent {
 
 
 
-    constructor(private usuarioservices:UsuarioService) {
+    constructor(private usuarioservices:UsuarioService, private passtopdfService: PasstopdfService) {
         
         this.usuarioservices.GetUsuariosAutorizar(this.medicos).subscribe(
             x=> {
@@ -62,7 +63,9 @@ export class AdministrarMedicosComponent {
             
     }
 
-
+    public exportAsPDF(divId: string) {
+        this.passtopdfService.exportAsPDF(divId);
+      }
 
 }
 
