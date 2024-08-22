@@ -64,7 +64,7 @@ export class AdministrarMedicosComponent {
     }
 
     public exportAsPDF(divId: string) {
-        this.passtopdfService.exportAsPDF(this.medicos);
+        this.passtopdfService.listamedPDF(this.medicos);
       }
 
 }

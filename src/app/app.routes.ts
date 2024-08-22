@@ -30,7 +30,8 @@ export const routes: Routes = [
     // {path:'bienvenida', component:BienvenidaComponent, canActivate:[usuarioLogueadoGuard], children:[
         {path:'bienvenida', loadComponent:() => import('./componentes/bienvenida/bienvenida.component').then(l => l.BienvenidaComponent), canActivate:[usuarioLogueadoGuard], children:[
         {path:'nuevo_turno', component:NuevoTurnoComponent},
-        {path:'administrar_medicos', component:AdministrarMedicosComponent, canActivate:[LogueadoNivel3Guard]},
+        // {path:'administrar_medicos', component:AdministrarMedicosComponent, canActivate:[LogueadoNivel3Guard]},
+        {path:'administrar_medicos',  loadComponent:() => import('./componentes/administrar-medicos/administrar-medicos.component').then(l => l.AdministrarMedicosComponent), canActivate:[LogueadoNivel3Guard]},
         {path:'historial', component:HistorialComponent},
         {path:'turnos', component:TurnosComponent},
         {path:'perfil', component:PerfilComponent},
