@@ -38,8 +38,7 @@ export class LoginComponent {
         console.log("Token recibido:" , x);
         
 
-        //Guardamos el token recibido en el Local Storage
-        localStorage.setItem("UsuarioToken",x.toString());
+        
 
         //Decodifica el token
         var decode = jwtDecode<any>(x.toString());
@@ -54,7 +53,10 @@ export class LoginComponent {
             if(decode.data.autorizado == 0){ //Si el usuario no esta habilitado, no se loguea
               alert("Su usuario aun no esta habilitado. Por favor contactarse con un administrador");
             } else {
-            // this.usuarioservices.setLogueadoXApi(<Usuario>x);
+            // this.usuarioservices.setLogueadoXApi(<Usuario>x)
+            
+            //Guardamos el token recibido en el Local Storage
+            localStorage.setItem("UsuarioToken",x.toString());;
             
             //Si esta autorizado, redirige a bienvenida
             this.usuarioservices.setLogueado();
