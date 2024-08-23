@@ -7,6 +7,8 @@ import { QuitarusadosPipe } from "../../pipe/quitarusados.pipe";
 import { FiltromedsPipe } from "../../pipe/filtromeds.pipe";
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
+import { DataUsuario } from '../../entidades/data-usuario';
 
 @Component({
     selector: 'app-nuevo-turno',
@@ -16,17 +18,19 @@ import { RouterModule } from '@angular/router';
     imports: [CommonModule, QuitarusadosPipe, FiltromedsPipe, FormsModule, RouterModule]
 })
 export class NuevoTurnoComponent {
-  public usuario:Usuario = {id: 0,nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1};
-  public listaUsuario:Usuario [] = [];
+  public data:Usuario = {id: 0,nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1};
   public medicos:Usuario [] = [];
   public disponibilidad:Disponibilidad [] = [];
   public turnosusados:Array<Disponibilidad> = [];
   public filtroEspecialidad: string = '';
+  public decode:DataUsuario = {data: {id: 0,nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1}}
 
   
 
   constructor(private usuarioservices:UsuarioService) {
-    this.usuario = JSON.parse(localStorage.getItem('usuarioLogueado') || '[]');
+    const token = localStorage.getItem('UsuarioToken');
+    this.decode = jwtDecode<any>(token!);
+
     
     this.usuarioservices.GetDisponibilidadMedicos(this.medicos).subscribe(
       x=> {
@@ -90,13 +94,13 @@ export class NuevoTurnoComponent {
 
                     this.disponibilidad.push({
                         id_medico: medico.id_medico,
-                        id_usuario: this.usuario.id,
+                        id_usuario: this.decode.data.id,
                         nombre: medico.nombre,
                         apellido: medico.apellido,
                         especialidad: medico.especialidad,
                         fecha: this.formatDateForMySQL(new Date(diaActual)), // Convertir fecha al formato MySQL
                         hora: hora,
-                        aceptado: false
+                        aceptado: "Pendiente"
                     });
                 }
             }
