@@ -111,7 +111,7 @@ export class NuevoTurnoComponent {
     return this.disponibilidad;
 }
 
-tomarTurno(turno: Disponibilidad){
+public tomarTurno(turno: Disponibilidad){
     // console.log('Índice:', index);
     console.log('Longitud del array disponibilidad:', this.disponibilidad.length);
 

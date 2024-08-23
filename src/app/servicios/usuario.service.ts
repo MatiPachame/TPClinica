@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Disponibilidad } from '../clases/disponibilidad';
 import { jwtDecode } from 'jwt-decode';
+import { DataUsuario } from '../entidades/data-usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -89,8 +90,8 @@ export class UsuarioService {
     return this.http.post(this.API + "/get_turnos_tomados", usuario);
   }
 
-  public GetTurnos(usuario:Usuario) {
-    return this.http.post(this.API + "/get_turnos", usuario);
+  public GetTurnos(usuario:DataUsuario) {
+    return this.http.post(this.API + "/get_turnos", usuario.data);
   }
 
 }

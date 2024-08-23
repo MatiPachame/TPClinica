@@ -3,6 +3,7 @@ import { Disponibilidad } from '../../clases/disponibilidad';
 import { UsuarioService } from '../../servicios/usuario.service';
 import { DataUsuario } from '../../entidades/data-usuario';
 import { jwtDecode } from 'jwt-decode';
+import { Usuario } from '../../entidades/usuario';
 
 @Component({
   selector: 'app-aceptar-turnos',
@@ -14,8 +15,8 @@ import { jwtDecode } from 'jwt-decode';
 export class AceptarTurnosComponent {
 
   public turnos:Disponibilidad[] = [];
-  public decode:DataUsuario = {data: {id: 0,nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1}}
-
+  public decode:DataUsuario = {data: {id: 0,nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1}};
+  public usuario:Usuario = {id: 0,nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1};
 
 
     constructor(private usuarioservices:UsuarioService){
@@ -23,15 +24,14 @@ export class AceptarTurnosComponent {
       const token = localStorage.getItem('UsuarioToken');
       this.decode = jwtDecode<any>(token!);
 
-      console.log(this.decode);
 
-
-
-      this.usuarioservices.GetTurnos(this.decode.data).subscribe(
+      this.usuarioservices.GetTurnos(this.decode).subscribe(
         x=> {
-          if((<Disponibilidad[]>x).length >=1){
+          if((<Disponibilidad[]>x)?.length >=1){
             console.log("Se han encontrado turnos", x);
             this.turnos = Object.assign([], x);
+        } else {
+          console.log("No se han encontrado turnos o x es null/undefined", x);
         }
           
         });
