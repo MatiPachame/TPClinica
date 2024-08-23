@@ -28,17 +28,18 @@ export class AdministrarMedicosComponent {
             x=> {
 
                 if((<Usuario[]>x).length >=1){
-                    console.log("Se han encontrado medicos/admins");
+                    console.log("Se han encontrado medicos/admins", x);
                     this.medicos = Object.assign([], x);
                 
             }
         });
     }
 
-    public autorizar(index: number){
-        let usuarioAutorizar = this.medicos[index];
+    public autorizar(medico:Usuario){
+        let usuarioAutorizar = medico;
 
         usuarioAutorizar.autorizado = 1;
+        console.log("Usuario autorizado:", usuarioAutorizar)
         this.usuarioservices.AutorizacionUsuario(usuarioAutorizar).subscribe(
             x=>{
 
@@ -49,8 +50,8 @@ export class AdministrarMedicosComponent {
             
     }
 
-    public Desautorizar(index: number){
-        let usuarioAutorizar = this.medicos[index];
+    public Desautorizar(medico:Usuario){
+        let usuarioAutorizar = medico;
 
         usuarioAutorizar.autorizado = 0;
         this.usuarioservices.AutorizacionUsuario(usuarioAutorizar).subscribe(

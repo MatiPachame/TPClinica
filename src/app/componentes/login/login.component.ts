@@ -35,14 +35,10 @@ export class LoginComponent {
     this.usuarioservices.loginAPI(this.usuario).subscribe(
       x=>{
 
-        console.log("Token recibido:" , x);
-        
-
-        
-
         //Decodifica el token
         var decode = jwtDecode<any>(x.toString());
 
+        console.log(decode);
 
         //Verificamos que haya un usuario dentro del token
         if(decode.data.usuario !=null) {

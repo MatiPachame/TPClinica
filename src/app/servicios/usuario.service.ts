@@ -89,4 +89,8 @@ export class UsuarioService {
     return this.http.post(this.API + "/get_turnos_tomados", usuario);
   }
 
+  public GetTurnos(usuario:Usuario) {
+    return this.http.post(this.API + "/get_turnos", usuario);
+  }
+
 }
