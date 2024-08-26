@@ -35,7 +35,10 @@ export class LoginComponent {
     this.usuarioservices.loginAPI(this.usuario).subscribe(
       x=>{
 
-        //Decodifica el token
+        if(x == null){
+          alert("Usuario/contraseña incorrecta");
+        } else {
+          //Decodifica el token
         var decode = jwtDecode<any>(x.toString());
 
         console.log(decode);
@@ -62,6 +65,9 @@ export class LoginComponent {
             }
 
         }
+        }
+
+        
                      
             
       }
