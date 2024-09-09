@@ -6,23 +6,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { firebaseConfig } from './firebase';
 
-// export const appConfig: ApplicationConfig = {
-//   providers: [provideRouter(routes),
-//     importProvidersFrom(
-//       JwtModule.forRoot({
-//           config: {
-//               tokenGetter: tokenGetter,
-//               allowedDomains: ["localhost:4200"],
-//               disallowedRoutes: ["http://localhost:4200/login/", "http://localhost:4200/usuario/", "http://localhost:4200/usuario-logueado/" ],
-//           },
-//       }),
-//   ), provideHttpClient(withInterceptorsFromDi())]
-// };
 
-// export function tokenGetter() {
-//   return localStorage.getItem("UsuarioToken");
-// }
 
 export const appConfig: ApplicationConfig = {
   providers: [
