@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ChatservicesService } from '../../servicios/chatservices.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-foro',
@@ -15,7 +16,7 @@ export class ForoComponent {
   public mensaje: string="";
   public nombre: string="";
   public apellido: string="";
-  constructor(public srvChat: ChatservicesService) {
+  constructor(private route:Router,public srvChat: ChatservicesService) {
     srvChat.getChat().then(t=> {
       this.chats = t.docs.map(chat => chat.data());
     console.log(this.chats );
@@ -25,5 +26,7 @@ export class ForoComponent {
 
   public enviar(){
     this.srvChat.setForo({nombre:this.nombre, apellido:this.apellido,mensaje:this.mensaje});
+    alert("Mensaje enviado");
+    this.route.navigateByUrl('/principal');
   }
 }

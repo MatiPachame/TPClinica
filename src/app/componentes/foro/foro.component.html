@@ -20,12 +20,12 @@
                   </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <textarea [(ngModel)]="mensaje" class="form-control form-control-lg" rows="4"required></textarea>
+                    <textarea [(ngModel)]="mensaje" class="form-control form-control-lg" rows="4" name="mensaje"></textarea>
                     <label class="form-label">Mensaje</label>
                 </div>
   
                   <div class="d-flex justify-content-center">
-                    <input type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" (click)="enviar()" value="Iniciar Sesión">
+                    <input type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" (click)="enviar()" value="Enviar Mensaje">
                   </div>
   
                 </form>
