@@ -16,6 +16,7 @@ import { ReportesComponent } from './componentes/reportes/reportes.component';
 import { PacientesComponent } from './componentes/pacientes/pacientes.component';
 import { CalendarioComponent } from './componentes/calendario/calendario.component';
 import { LogueadoNivel2Guard, LogueadoNivel3Guard,usuarioDeslogueadoGuard, usuarioLogueadoGuard } from './guards/usuario-logueado.guard';
+import { ForoComponent } from './componentes/foro/foro.component';
 
 export const routes: Routes = [
 
@@ -23,8 +24,8 @@ export const routes: Routes = [
     {path:'principal', loadComponent:() => import('./componentes/principal/principal.component').then(l => l.PrincipalComponent),children:[
         {path:'login', component:LoginComponent, canActivate:[usuarioDeslogueadoGuard]},
         {path:'registro', component:RegistroComponent,canActivate:[usuarioDeslogueadoGuard]},
-        {path:'institucional', component:InstitucionalComponent, canActivate:[usuarioDeslogueadoGuard]}
-
+        {path:'institucional', component:InstitucionalComponent, canActivate:[usuarioDeslogueadoGuard]},
+        {path: 'foro', component:ForoComponent, canActivate:[usuarioDeslogueadoGuard]}
     ]},
 
     // {path:'bienvenida', component:BienvenidaComponent, canActivate:[usuarioLogueadoGuard], children:[

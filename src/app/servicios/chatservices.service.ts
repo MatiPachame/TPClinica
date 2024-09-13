@@ -18,4 +18,12 @@ export class ChatservicesService {
   public setChat( valor: any){
      addDoc(collection(this.firestore, 'chat'),valor);
   }
+
+  public getForo() {
+    return getDocs(collection(this.firestore, "foro"));
+  }
+
+  public setForo( valor: any){
+     addDoc(collection(this.firestore, 'foro'),valor);
+  }
 }
