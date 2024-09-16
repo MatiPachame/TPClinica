@@ -6,11 +6,12 @@ import { jwtDecode } from 'jwt-decode';
 import { Usuario } from '../../entidades/usuario';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { FiltroTurnosAceptadosPipe } from '../../pipe/filtro-turnos-aceptados.pipe';
 
 @Component({
   selector: 'app-aceptar-turnos',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule, FiltroTurnosAceptadosPipe],
   templateUrl: './aceptar-turnos.component.html',
   styleUrl: './aceptar-turnos.component.css'
 })
