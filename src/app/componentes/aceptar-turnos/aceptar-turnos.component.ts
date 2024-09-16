@@ -4,11 +4,13 @@ import { UsuarioService } from '../../servicios/usuario.service';
 import { DataUsuario } from '../../entidades/data-usuario';
 import { jwtDecode } from 'jwt-decode';
 import { Usuario } from '../../entidades/usuario';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-aceptar-turnos',
   standalone: true,
-  imports: [],
+  imports: [CommonModule,FormsModule],
   templateUrl: './aceptar-turnos.component.html',
   styleUrl: './aceptar-turnos.component.css'
 })
@@ -36,5 +38,31 @@ export class AceptarTurnosComponent {
           
         });
 
+    }
+
+    public Aceptarturno(turno: Disponibilidad){
+
+
+      console.log("Turno aceptado");
+      this.usuarioservices.turnoAceptado(turno).subscribe(
+        x=>{
+
+           alert("Turno aceptado correctamente!");
+
+        }
+    );
+
+    }
+
+    public Rechazarturno(turno: Disponibilidad){
+      console.log("Turno rechazado");
+      this.usuarioservices.turnoRechazado(turno).subscribe(
+        x=>{
+
+           alert("Turno rechazado correctamente!");
+
+        }
+    );
+      
     }
 }

@@ -94,4 +94,12 @@ export class UsuarioService {
     return this.http.post(this.API + "/get_turnos", usuario.data);
   }
 
+  public turnoAceptado(turno:Disponibilidad){
+    return this.http.post(this.API + "/aceptar_turno", turno);
+  }
+
+  public turnoRechazado(turno:Disponibilidad){
+    return this.http.post(this.API + "/rechazar_turno", turno);
+  }
+
 }
