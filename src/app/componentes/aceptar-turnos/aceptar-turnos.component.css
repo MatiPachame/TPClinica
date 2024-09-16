@@ -1,0 +1,79 @@
+.appointments-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 tarjetas por fila */
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px;
+    justify-items: center; /* Centrar las tarjetas horizontalmente */
+}
+
+.appointment-card {
+    width: 100%;
+    max-width: 400px;
+    background-color: #f8f9fa;
+    border: 2px solid #28a745; /* Verde */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.appointment-header {
+    margin-bottom: 10px;
+}
+
+.patient-name {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.appointment-details {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.appointment-day {
+    margin-bottom: 5px;
+}
+
+.appointment-time {
+    margin-bottom: 15px;
+}
+
+.appointment-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los botones */
+}
+
+.accept-button {
+    background-color: #28a745; /* Verde */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accept-button:hover {
+    background-color: #218838;
+}
+
+.reject-button {
+    background-color: #dc3545; /* Rojo */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reject-button:hover {
+    background-color: #c82333;
+}
+
+

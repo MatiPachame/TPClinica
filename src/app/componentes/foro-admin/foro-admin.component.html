@@ -1,0 +1,14 @@
+<div class="container-forum">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let chat of chats">
+        <div class="card-forum">
+          <div class="card-body-forum">
+            <h4 class="card-name">{{ chat.nombre }} {{ chat.apellido }}</h4>
+            <p class="card-message">{{ chat.mensaje }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
