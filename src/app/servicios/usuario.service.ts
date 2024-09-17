@@ -101,5 +101,9 @@ export class UsuarioService {
   public turnoRechazado(turno:Disponibilidad){
     return this.http.post(this.API + "/rechazar_turno", turno);
   }
+  
+  public GetMisTurnos(usuario:DataUsuario) {
+    return this.http.post(this.API + "/get_mis_turnos", usuario.data);
+  }
 
 }
