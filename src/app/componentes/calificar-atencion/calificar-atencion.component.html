@@ -1,0 +1,15 @@
+<h2 mat-dialog-title class="dialog-title">Calificar atención</h2>
+<div mat-dialog-content class="dialog-content">
+  <mat-form-field class="form-field" appearance="fill">
+    <mat-label>Calificación</mat-label>
+    <input matInput type="number" [(ngModel)]="calificacion" min="1" max="10">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button class="cancel-button" (click)="onCancel()">Cancelar</button>
+  <button mat-button class="confirm-button" (click)="onConfirm()">Confirmar</button>
+</div>
+
+
+
+

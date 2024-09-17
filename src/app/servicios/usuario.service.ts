@@ -106,4 +106,8 @@ export class UsuarioService {
     return this.http.post(this.API + "/get_mis_turnos", usuario.data);
   }
 
+  public turnoFinalizado(turno:Disponibilidad){
+    return this.http.post(this.API + "/finalizar_turno", turno);
+  }
+
 }
