@@ -11,6 +11,7 @@ import { CalificarAtencionComponent } from '../calificar-atencion/calificar-aten
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { PasstocsvService } from '../../servicios/passtocsv.service';
 
 @Component({
   selector: 'app-pacientes',
@@ -25,7 +26,7 @@ export class PacientesComponent {
   public turnos:Disponibilidad[] = [];
   public decode:DataUsuario = {data: {id: 0,nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1}};
 
-  constructor(private usuarioservices:UsuarioService, private route:Router,private dialog: MatDialog){
+  constructor(private usuarioservices:UsuarioService, private route:Router,private dialog: MatDialog,private passtocsvService: PasstocsvService){
 
     const token = localStorage.getItem('UsuarioToken');
     this.decode = jwtDecode<any>(token!);
@@ -72,10 +73,12 @@ export class PacientesComponent {
 
   }
 
-  
+  public Chat(turno : Disponibilidad){
 
-  public Chat(turno:Disponibilidad){
+  }
 
+  public exportAsCSV() {
+    this.passtocsvService.listaturnos(this.turnos);
   }
 
 }
