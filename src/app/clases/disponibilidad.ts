@@ -11,4 +11,6 @@ export class Disponibilidad {
     public diagnostico?: string;
     public val_pac?: number;
     public val_med?: number;
+    public comentario_pac?: string;
+    public comentario_med?: string;
 }

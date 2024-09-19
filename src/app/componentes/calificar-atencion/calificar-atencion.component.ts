@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class CalificarAtencionComponent {
   public calificacion: number = 5;  // Valor inicial de la calificación
+  public comentario: string = '';  // Nueva variable para la reseña
 
   constructor(
     public dialogRef: MatDialogRef<CalificarAtencionComponent>,
@@ -22,7 +23,7 @@ export class CalificarAtencionComponent {
   ) {}
 
   onConfirm(): void {
-    this.dialogRef.close(this.calificacion);  // Retorna la calificación seleccionada
+    this.dialogRef.close({ calificacion: this.calificacion, reseña: this.comentario });  // Retorna la calificación y la reseña
   }
 
   onCancel(): void {

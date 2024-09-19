@@ -1,25 +1,21 @@
-/* Título del diálogo centrado */
+/* Título del diálogo */
 .dialog-title {
     font-size: 1.5rem;
     font-weight: bold;
-    text-align: center; /* Centra el texto */
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-/* Contenido del diálogo con mayor espacio y borde verde */
+/* Contenido del diálogo */
 .dialog-content {
     padding: 20px;
-    border: 2px solid #28a745; /* Borde verde */
-    border-radius: 10px;
-    background-color: white;
 }
 
-/* Campo de calificación con ancho completo */
+/* Campo de calificación */
 .form-field {
     width: 100%;
 }
 
-/* Botones de acción en el diálogo */
+/* Botones de acción */
 .dialog-actions {
     display: flex;
     justify-content: space-between;
@@ -28,26 +24,23 @@
 
 /* Botón "Confirmar" verde */
 .confirm-button {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745;
     color: white;
     border: none;
-    padding: 12px 24px; /* Ajusta el padding */
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem; /* Tamaño de fuente ajustado */
 }
 
 /* Botón "Cancelar" rojo */
 .cancel-button {
-    background-color: #dc3545; /* Rojo */
+    background-color: #dc3545;
     color: white;
     border: none;
-    padding: 12px 24px; /* Ajusta el padding */
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem; /* Tamaño de fuente ajustado */
 }
-
 
 
   

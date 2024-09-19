@@ -46,14 +46,17 @@ export class PacientesComponent {
   public finalizarTurno(turno: Disponibilidad): void {
     const dialogRef = this.dialog.open(CalificarAtencionComponent, {
       width: '400px',
+      panelClass: 'full-width-dialog',  // Aumenta el control sobre el diálogo
       data: { turno: turno }
     });
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // Si se recibe una calificación, asigna la calificación al turno y guárdala en val_pac
-        turno.val_pac = result;  // Guarda la calificación en la propiedad `val_pac` del turno
+        turno.val_pac = result.calificacion;  // Guarda la calificación en la propiedad `val_pac` del turno
+        turno.comentario_pac = result.comentario;
         console.log('Calificación guardada:', turno);
+        console.log('Reseña guardada:', turno.comentario_pac);
   
         // Aquí podrías realizar alguna otra acción, como enviar el dato a la base de datos
         this.usuarioservices.turnoFinalizado(turno).subscribe(
