@@ -110,4 +110,8 @@ export class UsuarioService {
     return this.http.post(this.API + "/finalizar_turno", turno);
   }
 
+  public GetMisTurnos_Paciente(usuario:DataUsuario) {
+    return this.http.post(this.API + "/get_mis_turnos_paciente", usuario.data);
+  }
+
 }
