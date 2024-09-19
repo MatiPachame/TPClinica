@@ -12,34 +12,6 @@ export class PasstopdfService {
 
 
   constructor(private http: HttpClient) { }
-
-
-//   exportAsPDF(divId: string) {
-//     let data = document.getElementById(divId);
-
-//     // Mostrar el contenedor antes de capturarlo
-//     if (data) {
-//         data.style.display = 'block';
-//     }
-
-//     html2canvas(data!, { scale: 4 }).then(canvas => {
-//       const contentDataURL = canvas.toDataURL('image/png');
-//       let pdf = new jspdf('p', 'cm', 'a4');
-
-//       // Ancho y alto de la imagen en el PDF (21 cm es el ancho de una página A4 en cm)
-//       let imgWidth = 21.0;
-//       let imgHeight = (canvas.height * imgWidth) / canvas.width; // Mantener la proporción
-
-//       pdf.addImage(contentDataURL, 'PNG', 0, 0, imgWidth, imgHeight);
-//       pdf.save('ListaMedicos.pdf');
-
-//         // Volver a ocultar el contenedor después de capturarlo
-//         if (data) {
-//             data.style.display = 'none';
-//         }
-//     });
-// }
-
 listamedPDF1(medicos:Usuario[]) {
     const pdf = new jsPDF();
 

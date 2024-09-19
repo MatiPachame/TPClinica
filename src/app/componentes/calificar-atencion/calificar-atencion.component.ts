@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import { coerceArray } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-calificar-atencion',
@@ -23,7 +24,7 @@ export class CalificarAtencionComponent {
   ) {}
 
   onConfirm(): void {
-    this.dialogRef.close({ calificacion: this.calificacion, reseña: this.comentario });  // Retorna la calificación y la reseña
+    this.dialogRef.close({ calificacion: this.calificacion, comentario: this.comentario });  // Retorna la calificación y la reseña
   }
 
   onCancel(): void {
