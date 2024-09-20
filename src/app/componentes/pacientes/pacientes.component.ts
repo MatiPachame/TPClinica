@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
 import { MatDialog } from '@angular/material/dialog';
-import { CalificarAtencionComponent } from '../calificar-atencion/calificar-atencion.component';
+import { CalificarAtencionComponent } from '../../ventanas/diagnostico-dialog/calificar-atencion/calificar-atencion.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { PasstocsvService } from '../../servicios/passtocsv.service';
+import { DiagnosticoDialogComponent } from '../../ventanas/diagnostico-dialog/diagnostico-dialog.component';
 
 @Component({
   selector: 'app-pacientes',
@@ -76,6 +77,31 @@ export class PacientesComponent {
   public Chat(turno : Disponibilidad){
 
   }
+
+  public abrirDiagnostico(turno: Disponibilidad): void {
+    const dialogRef = this.dialog.open(DiagnosticoDialogComponent, {
+      width: '500px',  // Aumenta el ancho del pop-up
+      height: 'auto',  // Ajusta el alto dinámicamente
+      panelClass: 'custom-dialog-container',  // Aplica clases personalizadas
+      data: { diagnostico: turno.diagnostico || '' }// Pasa el diagnóstico actual o una cadena vacía si no existe
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        turno.diagnostico = result;  // Actualiza el diagnóstico en el objeto turno
+        console.log('Diagnóstico actualizado:', result);
+  
+        // Actualiza el diagnóstico en la base de datos
+        this.usuarioservices.actualizarDiagnostico(turno).subscribe(
+          x => {
+            console.log('Diagnóstico guardado en la base de datos:', x);
+            alert("Diagnóstico actualizado correctamente!");
+          }
+        );
+      }
+    });
+  }
+  
 
   public exportAsCSV() {
     this.passtocsvService.listaturnos(this.turnos);

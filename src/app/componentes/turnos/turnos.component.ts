@@ -27,7 +27,7 @@ export class TurnosComponent {
     const token = localStorage.getItem('UsuarioToken');
     this.decode = jwtDecode<any>(token!);
 
-
+    console.log(this.decode);
     this.usuarioservices.GetMisTurnos_Paciente(this.decode).subscribe(
       x=> {
         if((<Disponibilidad[]>x)?.length >=1){
@@ -37,6 +37,10 @@ export class TurnosComponent {
         alert("No se encontraron turnos aceptados");
         this.route.navigateByUrl('/bienvenida');
       }});
+
+  }
+
+  public reseniaTurno(turno:Disponibilidad){
 
   }
 

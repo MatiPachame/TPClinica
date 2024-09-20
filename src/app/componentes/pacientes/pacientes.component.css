@@ -32,7 +32,7 @@
     background-color: #6f42c1; /* Violeta */
     color: white;
     border: none;
-    width: 50%;
+    width: 33%; /* Ajustado para hacer espacio a los tres botones */
 }
 
 /* Botón "Chat" en color azul */
@@ -40,7 +40,15 @@
     background-color: #007bff; /* Azul */
     color: white;
     border: none;
-    width: 50%;
+    width: 33%; /* Ajustado para hacer espacio a los tres botones */
+}
+
+/* Botón "Diagnóstico" en color verde oscuro */
+.btn-diagnostico {
+    background-color: #218838; /* Verde oscuro */
+    color: white;
+    border: none;
+    width: 33%; /* Ajustado para hacer espacio a los tres botones */
 }
 
 /* Ajustes de margen de los botones */
@@ -56,5 +64,6 @@
 .container {
     margin-top: 30px;
 }
+
 
 

@@ -1,0 +1,54 @@
+/* Estilo para el diálogo */
+mat-dialog-container {
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra */
+    padding: 20px; /* Espaciado interno */
+    background-color: #f9f9f9; /* Fondo más claro */
+  }
+  
+  /* Estilo para el título */
+  .dialog-title {
+    font-size: 1.8rem; /* Tamaño más grande */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px; /* Espacio debajo del título */
+    color: #333; /* Color de texto */
+  }
+  
+  /* Estilo para los botones */
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between; /* Espaciar botones */
+    margin-top: 20px;
+  }
+  
+  .cancel-button {
+    background-color: #dc3545; /* Rojo */
+    color: white;
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px 20px; /* Tamaño del botón */
+  }
+  
+  .confirm-button {
+    background-color: #28a745; /* Verde */
+    color: white;
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px 20px;
+  }
+  
+  /* Estilo para el campo de diagnóstico */
+  mat-form-field {
+    width: 100%; /* Ocupa todo el ancho */
+  }
+  
+  textarea {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 8px; /* Bordes redondeados */
+  }
+  
+  /* Ajuste para la caja de texto */
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 8px; /* Bordes redondeados */
+  }
+  

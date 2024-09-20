@@ -114,4 +114,8 @@ export class UsuarioService {
     return this.http.post(this.API + "/get_mis_turnos_paciente", usuario.data);
   }
 
+  public actualizarDiagnostico(turno:Disponibilidad) {
+    return this.http.post(this.API + "/actualizar_diagnostico", turno);
+  }
+
 }
