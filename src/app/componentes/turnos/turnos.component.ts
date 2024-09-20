@@ -5,14 +5,18 @@ import { Disponibilidad } from '../../clases/disponibilidad';
 import { CommonModule } from '@angular/common';
 import { DataUsuario } from '../../entidades/data-usuario';
 import { jwtDecode } from 'jwt-decode';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { PasstocsvService } from '../../servicios/passtocsv.service';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-turnos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, RouterModule,MatFormFieldModule, MatInputModule, MatIconModule],
   templateUrl: './turnos.component.html',
   styleUrl: './turnos.component.css'
 })
@@ -39,11 +43,6 @@ export class TurnosComponent {
       }});
 
   }
-
-  public reseniaTurno(turno:Disponibilidad){
-
-  }
-
 
   public Chat(turno:Disponibilidad){
     

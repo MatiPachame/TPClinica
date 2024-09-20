@@ -118,4 +118,13 @@ export class UsuarioService {
     return this.http.post(this.API + "/actualizar_diagnostico", turno);
   }
 
+  public GetHistorial_Paciente(usuario:DataUsuario) {
+    return this.http.post(this.API + "/historial_paciente", usuario.data);
+  }
+
+  public valoracionPaciente(turno:Disponibilidad) {
+    return this.http.post(this.API + "/valoracion_paciente", turno);
+  }
+
+
 }

@@ -1,1 +1,26 @@
-<p>historial works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let turno of turnos">
+        <div class="card turno-card">
+          <div class="card-body">
+            <h4 class="card-title text-center">{{ turno.nombre }} {{turno.apellido}}</h4>
+            <p class="card-text">
+              <strong>Día:</strong> {{ turno.fecha | date: 'yyyy-MM-dd' }} <br>
+              <strong>Horario:</strong> {{ turno.hora }}hs <br>
+              <strong>Especialidad:</strong> {{ turno.especialidad }} <br>
+              <strong>Estado del turno:</strong> {{ turno.aceptado }} <br>
+            </p>
+
+            <div class="btn-group w-100" role="group">
+              <button class="btn btn-chat" type="button" (click)="verDiagnostico(turno)">Ver Diagnóstico</button>
+            </div>
+            <div class="btn-group w-100 mt-2" role="group" *ngIf="!turno.val_med && !turno.comentario_med">
+              <button class="btn btn-reseña" type="button" (click)="resenia(turno)">Reseña</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
