@@ -50,6 +50,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -71,7 +72,8 @@ export const appConfig: ApplicationConfig = {
       MatInputModule
     ]),
     provideHttpClient(withInterceptorsFromDi()),
-    provideAnimationsAsync() // Proveedor necesario para las animaciones de Angular Material
+    provideAnimationsAsync(),
+    provideCharts(withDefaultRegisterables()) // Proveedor necesario para las animaciones de Angular Material
   ]
 };
 

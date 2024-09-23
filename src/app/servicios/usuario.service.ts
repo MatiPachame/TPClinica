@@ -126,5 +126,9 @@ export class UsuarioService {
     return this.http.post(this.API + "/valoracion_paciente", turno);
   }
 
+  public traerPuntuacion(usuario: DataUsuario) {
+    return this.http.post(this.API + "/traer_puntuaciones", usuario);
+
+  }
 
 }

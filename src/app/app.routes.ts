@@ -18,6 +18,7 @@ import { CalendarioComponent } from './componentes/calendario/calendario.compone
 import { LogueadoNivel2Guard, LogueadoNivel3Guard,usuarioDeslogueadoGuard, usuarioLogueadoGuard } from './guards/usuario-logueado.guard';
 import { ForoComponent } from './componentes/foro/foro.component';
 import { ForoAdminComponent } from './componentes/foro-admin/foro-admin.component';
+import { PuntuacionesComponent } from './componentes/puntuaciones/puntuaciones.component';
 
 export const routes: Routes = [
 
@@ -43,6 +44,7 @@ export const routes: Routes = [
         {path:'pacientes', component:PacientesComponent, canActivate:[LogueadoNivel2Guard]},
         {path:'calendario', component:CalendarioComponent, canActivate:[LogueadoNivel2Guard]},
         {path:'foro_admin', component:ForoAdminComponent, canActivate:[LogueadoNivel2Guard]},
+        {path:'puntuaciones', component:PuntuacionesComponent},
     ]},
 
 

@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Para centrar verticalmente */
+  }
+  
+  #barChart {
+    background-color: white; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 8px; /* Esquinas redondeadas (opcional) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle estilo */
+  }
+  
