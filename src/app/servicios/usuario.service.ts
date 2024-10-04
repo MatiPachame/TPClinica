@@ -23,25 +23,6 @@ export class UsuarioService {
   constructor(public http: HttpClient) {
     this.listaUsuario = JSON.parse(localStorage.getItem('usuarioLogueado') || '[]');
     this.setLogueado()
-
-    // this.listaUsuario = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    // if(localStorage.getItem('usuarioLogueado') ?? '' != ''){
-    //   this.usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado') ?? '');
-    // }
-
-    //  }
-    //   public usuarioLogueado:Usuario= {nombre:'', password:'', mail:''};
-
-    //   public listaUsuario:Usuario[] = [];
-
-    //   public estoyLogueado() :boolean{
-    //     return this.usuarioLogueado.nombre != '';    }
-
-
-    //   public setLogueado(){
-    //     if(localStorage.getItem('usuarioLogueado') ?? '' != ''){
-    //       this.usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado') ?? '' );
-    //     }
   }
 
   public estoyLogueado(): boolean {
