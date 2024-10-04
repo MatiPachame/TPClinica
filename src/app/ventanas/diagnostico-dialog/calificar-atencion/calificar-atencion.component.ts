@@ -15,7 +15,7 @@ import { coerceArray } from '@angular/cdk/coercion';
   styleUrl: './calificar-atencion.component.css'
 })
 export class CalificarAtencionComponent {
-  public calificacion: number = 5;  // Valor inicial de la calificación
+  public calificacion: number = 0;  // Valor inicial de la calificación
   public comentario: string = '';  // Nueva variable para la reseña
 
   constructor(
@@ -24,10 +24,20 @@ export class CalificarAtencionComponent {
   ) {}
 
   onConfirm(): void {
-    this.dialogRef.close({ calificacion: this.calificacion, comentario: this.comentario });  // Retorna la calificación y la reseña
+    // Verificar si la calificación es válida
+    if (this.isValid()) {
+      this.dialogRef.close({ calificacion: this.calificacion, comentario: this.comentario });
+    } else {
+      alert('Por favor, ingresa una calificación entre 0 y 5.');
+    }
   }
 
   onCancel(): void {
     this.dialogRef.close();  // Cierra el diálogo sin valor
+  }
+
+  // Método para verificar si la calificación es válida
+  isValid(): boolean {
+    return this.calificacion >= 0 && this.calificacion <= 5;
   }
 }

@@ -2,7 +2,7 @@
 <div mat-dialog-content class="dialog-content">
   <mat-form-field class="form-field" appearance="fill">
     <mat-label>Calificación</mat-label>
-    <input matInput type="number" [(ngModel)]="calificacion" min="1" max="10">
+    <input matInput type="number" [(ngModel)]="calificacion" min="0" max="5" step="0.5" required>
   </mat-form-field>
 
   <mat-form-field class="form-field" appearance="fill">
@@ -12,10 +12,5 @@
 </div>
 <div mat-dialog-actions class="dialog-actions">
   <button mat-button class="cancel-button" (click)="onCancel()">Cancelar</button>
-  <button mat-button class="confirm-button" (click)="onConfirm()">Confirmar</button>
+  <button mat-button class="confirm-button" (click)="onConfirm()" [disabled]="!isValid()">Confirmar</button>
 </div>
-
-
-
-
-

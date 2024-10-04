@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Injectable } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-loading',
@@ -10,5 +11,14 @@ import { NavigationEnd, NavigationStart, Router } from '@angular/router';
   styleUrl: './loading.component.css'
 })
 export class LoadingComponent {
-  @Input() isLoading:boolean = false;
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
+
+  show(): void {
+    this.loadingSubject.next(true);
+  }
+
+  hide(): void {
+    this.loadingSubject.next(false);
+  }
 }
