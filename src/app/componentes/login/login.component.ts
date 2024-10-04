@@ -34,7 +34,7 @@ export class LoginComponent {
     this.isLoading = true; // Mostrar el indicador de carga  
     this.usuarioservices.loginAPI(this.usuario).subscribe(
       x=>{
-
+        this.isLoading = false;
         if(x == null){
           alert("Usuario/contraseña incorrecta");
         } else {
