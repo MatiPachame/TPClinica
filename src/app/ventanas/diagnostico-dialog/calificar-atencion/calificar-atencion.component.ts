@@ -30,7 +30,7 @@ export class CalificarAtencionComponent {
     } else {
       alert('Por favor, ingresa una calificación entre 0 y 5.');
     }
-  }
+  } 
 
   onCancel(): void {
     this.dialogRef.close();  // Cierra el diálogo sin valor
