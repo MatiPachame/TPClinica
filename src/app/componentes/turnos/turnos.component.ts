@@ -12,11 +12,12 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { FiltromedsPipe } from '../../pipe/filtromeds.pipe';
 
 @Component({
   selector: 'app-turnos',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule,MatFormFieldModule, MatInputModule, MatIconModule],
+  imports: [CommonModule, FormsModule, RouterModule,MatFormFieldModule, MatInputModule, MatIconModule, FiltromedsPipe],
   templateUrl: './turnos.component.html',
   styleUrl: './turnos.component.css'
 })
@@ -24,6 +25,7 @@ export class TurnosComponent {
 
   public turnos:Disponibilidad[] = [];
   public decode:DataUsuario = {data: {id: 0,nombre: '',apellido:'', mail:'', nacimiento: new Date(), usuario:'', password: '', tipo_usuario: 0, autorizado:1}};
+  public filtroEspecialidad: string = '';
 
 
   constructor(private usuarioservices:UsuarioService, private route:Router,private dialog: MatDialog,private passtocsvService: PasstocsvService){
